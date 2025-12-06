@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Menambahkan semua route auth
+require __DIR__ . '/auth.php';
+
+// Menambahkan semua route landing
+require __DIR__ . '/landing.php';
+
+// Menambahkan semua route dashboard
+require __DIR__ . '/dashboard.php';
