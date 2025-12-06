@@ -30,7 +30,7 @@
             <!-- Judul -->
             <h1 class="font-plusJakartaSans text-[26px] max-sm:mt-16 font-bold text-[#333333] md:text-5xl">
                 Selamat Datang
-                <span class="text-gradient-blue">Sobat Binar</span>
+                <span class="text-gradient-blue">Sobat Binar!</span>
             </h1>
         </section>
         <!-- Hero Section End -->
