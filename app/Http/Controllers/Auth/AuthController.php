@@ -9,46 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // public function register(UserRequest $request)
-    // {
-    //     try {
-    //         $validated = $request->validated();
 
-    //         User::create([
-    //             'username' => $validated["username"],
-    //             'email' => $validated['email'],
-    //             'password' => bcrypt($validated['password']),
-    //             "role" => $validated["role"]
-    //         ]);
-
-
-    //          return redirect()->back()->with([
-    //             'alert' => true,
-    //             'type' => 'success',
-    //             'title' => 'Berhasil!',
-    //             'message' =>'Pendaftaran Berhasil',
-    //             'icon' => asset('assets/images/dashboard/success.webp'),
-    //         ]);
-    //     } catch (\Exception $e) {
-    //         return redirect()->back()->with([
-    //             'alert' => true,
-    //             'type' => 'error',
-    //             'title' => 'Gagal!',
-    //             'message' =>'Terjadi kesalahan, silahkan coba lagi',
-    //             'icon' => asset('assets/images/dashboard/error.webp'),
-    //         ]);
-    //     }
-    // }
-
-    // public function login()
-    // {
-    //      $agent = new Agent();
-
-    //     if ($agent->isMobile() && !$agent->isTablet()) {
-    //         return view('auth.block-mobile');
-    //     }
-    //     return view('auth.login');
-    // }
 
     public function authenticated(Request $request)
     {
@@ -63,7 +24,7 @@ class AuthController extends Controller
                 'icon' => asset('assets/images/dashboard/success.webp'),
             ]);
         } else {
-            return redirect()->route('home.index')->with([
+            return redirect()->route('auth.index')->with([
                 'alert' => true,
                 'type' => 'error',
                 'title' => 'Gagal!',
@@ -73,17 +34,19 @@ class AuthController extends Controller
         }
     }
 
-    // public function Logout()
-    // {
-    //     Auth::logout();
-    //     return redirect()->route('auth.login')->with([
-    //             'alert' => true,
-    //             'type' => 'success',
-    //             'title' => 'Logout Berhasil',
-    //             'message' =>'Sampai jumpa lagi 😘',
-    //             'icon' => asset('assets/images/dashboard/success.webp'),
-    //         ]);
-    // }
+    public function Logout()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('auth.index')->with([
+            'alert' => true,
+            'type' => 'success',
+            'title' => 'Logout Berhasil',
+            'message' => 'Sampai jumpa lagi 😘',
+            'icon' => asset('assets/images/dashboard/success.webp'),
+        ]);
+    }
 
     public function index()
     {

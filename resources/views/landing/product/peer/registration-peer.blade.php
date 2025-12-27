@@ -2,7 +2,8 @@
     'title' => 'Berbinar Insightful Indonesia',
 ])
 
-@push('style')
+
+@section('style')
     <style>
         .step-section {
             display: none;
@@ -23,7 +24,7 @@
             background-image: none !important;
         }
     </style>
-@endpush
+@endsection
 
 @section('content')
     <div

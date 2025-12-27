@@ -2,7 +2,7 @@
     'title' => 'Berbinar Insightful Indonesia',
 ])
 
-@push('style')
+@section('style')
     <style>
         .text-gradient {
             background: linear-gradient(to right, #f7b23b, #916823);
@@ -37,7 +37,7 @@
             transform: scaleY(0.83);
         }
     </style>
-@endpush
+@endsection
 
 @section('content')
     <div class="mt-28 sm:mt-32 leading-snug">

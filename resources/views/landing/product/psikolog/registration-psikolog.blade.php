@@ -2,7 +2,7 @@
     'title' => 'Berbinar Insightful Indonesia',
 ])
 
-@push('style')
+@section('style')
     <style>
         .step-section {
             display: none;
@@ -23,7 +23,7 @@
             background-image: none !important;
         }
     </style>
-@endpush
+@endsection
 
 @section('content')
     <div
@@ -41,8 +41,8 @@
             </a>
 
             <div class="flex cursor-pointer items-center space-x-1" id="openModal">
-                <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}"
-                    alt="Syarat & Ketentuan" class="h-3 w-auto" />
+                <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}" alt="Syarat & Ketentuan"
+                    class="h-3 w-auto" />
                 <p class="text-[15px] font-semibold text-[#3986A3]">
                     <span class="hidden sm:block">Syarat & Ketentuan</span>
                     <span class="block sm:hidden">S&K</span>
@@ -61,8 +61,8 @@
                     Syarat dan Ketentuan</h1>
                 <div class="mb-6">
                     <div class="flex items-start gap-2">
-                        <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}"
-                            alt="Pembalasan Pesan" class="mt-0.5 h-5 w-5" />
+                        <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}" alt="Pembalasan Pesan"
+                            class="mt-0.5 h-5 w-5" />
                         <span class="font-semibold">Ketentuan</span>
                     </div>
                     <ol class="mt-1 list-decimal space-y-1 pl-7">
@@ -77,8 +77,8 @@
 
                 <div class="mb-6">
                     <div class="flex items-start gap-2">
-                        <img src="{{ asset('assets/landing/images/vector/chat.webp') }}"
-                            alt="Pembalasan Pesan" class="mt-0.5 h-5 w-5" />
+                        <img src="{{ asset('assets/landing/images/vector/chat.webp') }}" alt="Pembalasan Pesan"
+                            class="mt-0.5 h-5 w-5" />
                         <span class="font-semibold">Alur Pendaftaran</span>
                     </div>
                     <ol class="mt-1 list-decimal space-y-1 pl-7">
@@ -102,8 +102,7 @@
 
         {{-- Form Input Pendafataran --}}
 
-        <form id="singleForm" action="" method="POST"
-            class="flex flex-col" enctype="multipart/form-data">
+        <form id="singleForm" action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
             @csrf
 
             <div class="step-section active">
