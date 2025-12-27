@@ -22,6 +22,10 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /home/${{ secrets.SSH_USERNAME }}/staff.berbinar.in
+            # TAMBAHKAN BARIS INI:
+            # Membuang perubahan di folder build agar tidak bentrok dengan git pull
+            git checkout public/build/ || true
+            
             git pull origin main
             # Optional: Add other server commands here like composer install or artisan migrate
             # php artisan migrate --force
