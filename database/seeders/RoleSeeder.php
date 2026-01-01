@@ -17,7 +17,10 @@ class RoleSeeder extends Seeder
         $roles = [
             [
                 'name' => 'manager-cpm'
-            ],            
+            ],
+            [
+                'name' => 'secfin'
+            ],
         ];
 
         foreach ($roles as $role) {
