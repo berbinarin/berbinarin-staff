@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
         ])->assignRole('manager-cpm');
 
         User::create([
-            'name' => 'Secretary Finance',
+            'name' => 'SecretaryFinance',
             'username' => 'secfin',
             'email' => 'secfin@gmail.com',
             'password' => bcrypt('berbinar123'),
