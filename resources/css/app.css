@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* DataTables Custom Styles */
+.dataTables_length select {
+    min-width: 60px;
+}
+
 @media (max-width: 767px) {
     .bg-none {
         background-image: none !important;

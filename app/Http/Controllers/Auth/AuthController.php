@@ -21,7 +21,7 @@ class AuthController extends Controller
                 'type' => 'success',
                 'title' => 'Login Berhasil',
                 'message' => 'Silahkan masuk',
-                'icon' => asset('assets/images/dashboard/success.webp'),
+                'icon' => asset('assets/dashboard/svg-icon/success.webp'),
             ]);
         } else {
             return redirect()->route('auth.index')->with([
@@ -29,7 +29,7 @@ class AuthController extends Controller
                 'type' => 'error',
                 'title' => 'Gagal!',
                 'message' => 'Username atau Password salah',
-                'icon' => asset('assets/images/dashboard/error.webp'),
+                'icon' => asset('assets/dashboard/svg-icon/error.webp'),
             ]);
         }
     }
@@ -44,7 +44,7 @@ class AuthController extends Controller
             'type' => 'success',
             'title' => 'Logout Berhasil',
             'message' => 'Sampai jumpa lagi 😘',
-            'icon' => asset('assets/images/dashboard/success.webp'),
+            'icon' => asset('assets/dashboard/svg-icon/success.webp'),
         ]);
     }
 

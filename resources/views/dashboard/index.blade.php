@@ -16,6 +16,12 @@
                             <p class="w-full text-disabled">Fitur ini digunakan untuk menampilkan data pendaftar konseling
                                 yang mendaftar melalui situs web Berbinar</p>
                         @endrole
+
+                        @role('secfin')
+                            <p tabindex="0" class="focus:outline-none text-4xl font-bold leading-normal text-gray-800 mb-2">
+                                Dashboard Secretary & Finance</p>
+                            <p class="w-full text-disabled">Halaman utama yang menampilkan ringkasan data <span class="italic">reimburse</span> dan <span class="italic">invoice</span> untuk memudahkan pemantauan serta pengelolaan administrasi keuangan.</p>
+                        @endrole
                     </div>
                 </div>
             </div>
@@ -177,6 +183,43 @@
                         });
                     </script>
                 @endsection
+            @endrole
+
+            @role('secfin')
+                <div class="flex flex-col w-full gap-6">
+                    <div class="grid grid-cols-2 w-full gap-6">
+
+                        <div class="flex flex-col gap-10 p-6 bg-white shadow-md rounded-xl w-full">
+                            <h2 class="block text-2xl font-semibold">Total Reimburse Diajukan</h2>
+                            <div class="flex flex-row w-full justify-between items-center">
+                                <h3 class="block font-bold text-3xl">265</h3>
+                                <img src={{ asset('assets/dashboard/icons/reimburse-total.webp') }} alt="" class="h-10 w-10" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-10 p-6 bg-white shadow-md rounded-xl w-full">
+                            <h2 class="block text-2xl font-semibold">Menunggu Verifikasi</h2>
+                            <div class="flex flex-row w-full justify-between items-center">
+                                <h3 class="block font-bold text-3xl">18</h3>
+                                <img src={{ asset('assets/dashboard/icons/menunggu-verifikasi.webp') }} alt="" class="h-10 w-10" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-10 p-6 bg-white shadow-md rounded-xl w-full">
+                            <h2 class="block text-2xl font-semibold">Disetujui</h2>
+                            <div class="flex flex-row w-full justify-between items-center">
+                                <h3 class="block font-bold text-3xl">2</h3>
+                                <img src={{ asset('assets/dashboard/icons/disetujui.webp') }} alt="" class="h-10 w-10" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-10 p-6 bg-white shadow-md rounded-xl w-full">
+                            <h2 class="block text-2xl font-semibold">Ditolak</h2>
+                            <div class="flex flex-row w-full justify-between items-center">
+                                <h3 class="block font-bold text-3xl">4</h3>
+                                <img src={{ asset('assets/dashboard/icons/ditolak.webp') }} alt="" class="h-10 w-10" />
+                            </div>
+                        </div>
+
+                    </div>
             @endrole
         </div>
     </section>

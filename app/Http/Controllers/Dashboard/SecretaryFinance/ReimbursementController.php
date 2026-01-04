@@ -34,7 +34,8 @@ class ReimbursementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    // public function show(string $id)
+    public function show()
     {
         return view('dashboard.secretary-finance.reimbursements.show');
     }

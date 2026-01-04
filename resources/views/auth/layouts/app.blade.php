@@ -17,13 +17,13 @@
     </main>
 
     {{-- Script --}}
-    @include('landing.partials.script')
+    @include('dashboard.partials.script')
 
     {{-- Additional Script --}}
     @stack('script')
 
     {{-- Alert --}}
-    {{-- @include('components.alert') --}}
+    @include('components.alert')
 </body>
 
 </html>
