@@ -21,6 +21,28 @@
 <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
 
+<!-- DataTables Custom Styling -->
+<style>
+    .dataTables_wrapper .dataTable thead th {
+        padding: 1rem;
+        background-color: white;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* Keep Tailwind's text alignment classes */
+    .dataTables_wrapper .dataTable thead th.text-center {
+        text-align: center !important;
+    }
+
+    .dataTables_wrapper .dataTable thead th.text-left {
+        text-align: left !important;
+    }
+
+    .dataTables_wrapper .dataTable thead th.text-right {
+        text-align: right !important;
+    }
+</style>
+
 
 <!-- App CSS (Tailwind via Vite) -->
 @vite('resources/css/app.css')

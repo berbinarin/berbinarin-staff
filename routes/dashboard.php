@@ -24,5 +24,6 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
 
         // Reimbursement
         Route::resource('/reimbursement', ReimbursementController::class);
+        Route::get('/reimbursement/show', [ReimbursementController::class, 'show'])->name('reimbursement.show');
     });
 });
