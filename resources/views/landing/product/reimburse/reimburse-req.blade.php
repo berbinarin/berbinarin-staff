@@ -209,11 +209,13 @@
                     </div>
                     <div>
                         <label class="form-label">TTD Pengusul<span class="text-red-500">*</span></label>
-                        <label class="custom-file-upload">
+                        <div onclick="openSignatureModal()" class="custom-file-upload" id="signature-preview-container">
                             <img src="{{ asset('assets/landing/images/vector/upload-icon.svg') }}" class="upload-icon" alt="Upload" />
-                            <span>Pilih file</span>
-                            <input type="file" class="input-file-hidden" />
-                        </label>
+                            <span id="signature-placeholder">Klik untuk Tanda Tangan</span>
+                            <img id="signature-image-res" class="hidden h-full py-1 ml-4">
+                        </div>
+                        
+                        <input type="hidden" name="signature" id="signature-input-value">
                     </div>
                 </div>
             </div>
@@ -236,9 +238,91 @@
 
     </form>
 </div>
+
+
+
+<div id="signature-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50 px-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold text-[#3986A3]">Tanda Tangan Digital</h3>
+            <button type="button" onclick="closeSignatureModal()" class="text-gray-400 hover:text-gray-600">&times;</button>
+        </div>
+        
+        <div class="border-2 border-dashed border-gray-200 rounded-lg bg-gray-50">
+            <canvas id="signature-pad" class="w-full h-64 touch-none cursor-crosshair"></canvas>
+        </div>
+        
+        <div class="mt-6 flex justify-end space-x-3">
+            <button type="button" id="clear-signature" class="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200">
+                Hapus
+            </button>
+            <button type="button" id="save-signature" class="px-4 py-2 text-sm font-medium text-white bg-[#3986A3] rounded-lg hover:bg-[#2f6f86]">
+                Simpan TTD
+            </button>
+        </div>
+    </div>
+</div>
 @endsection
 
 
 @push('script')
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 
+<script>
+    const modal = document.getElementById('signature-modal');
+    const canvas = document.getElementById('signature-pad');
+    const signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgba(255, 255, 255, 0)', 
+        penColor: 'rgb(0, 0, 0)'
+    });
+
+    function openSignatureModal() {
+        modal.classList.remove('hidden');
+        resizeCanvas(); 
+    }
+
+    function closeSignatureModal() {
+        modal.classList.add('hidden');
+    }
+
+    function resizeCanvas() {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+        signaturePad.clear(); 
+    }
+
+
+    document.getElementById('clear-signature').addEventListener('click', () => {
+        signaturePad.clear();
+    });
+
+
+    document.getElementById('save-signature').addEventListener('click', () => {
+        if (signaturePad.isEmpty()) {
+            alert("Tanda tangan masih kosong!");
+            return;
+        }
+
+        const dataURL = signaturePad.toDataURL('image/png');
+
+        document.getElementById('signature-input-value').value = dataURL;
+
+        const previewImg = document.getElementById('signature-image-res');
+        const placeholder = document.getElementById('signature-placeholder');
+        
+        previewImg.src = dataURL;
+        previewImg.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+
+        closeSignatureModal();
+    });
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeSignatureModal();
+        }
+    }
+</script>
 @endpush
