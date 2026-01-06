@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
-        return view('dashboard.index');
+        $totalReimburseDiajukan = 70;
+        $menungguVerifikasi = 40;
+        $disetujui = 20;
+        $ditolak = 10;
+        return view('dashboard.index', compact('totalReimburseDiajukan', 'menungguVerifikasi', 'disetujui', 'ditolak'));
     }
 }

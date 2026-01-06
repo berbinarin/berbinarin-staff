@@ -33,8 +33,8 @@
                                         <th class="sticky-col sticky-col-2 bg-white px-6 py-3 text-start text-base font-bold leading-4 tracking-wider text-black">
                                             No. Invoice
                                         </th>
-                                        <th class="bg-white px-6 py-3 text-center text-base font-bold leading-4 tracking-wider text-black">
-                                            Tanggal Pembuatan
+                                        <th class="bg-white w-[10%] px-6 py-3 text-center text-base font-bold leading-4 tracking-wider text-black">
+                                            Tanggal
                                         </th>
                                         <th class="bg-white px-6 py-3 text-center text-base font-bold leading-4 tracking-wider text-black">
                                             Ditujukan Kepada
