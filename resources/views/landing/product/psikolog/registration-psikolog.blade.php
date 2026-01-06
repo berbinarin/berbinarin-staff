@@ -241,7 +241,7 @@
                         <div class="relative">
                             <input name="email" required type="email"
                                 class="w-full cursor-pointer rounded-lg border-none bg-[#F1F3F6] px-3 py-3 shadow-md focus:ring-[#3986A3] md:shadow-none"
-                                placeholder="BudiSigmaMewing@gmail.com" />
+                                placeholder="BudiBerbinar@gmail.com" />
                         </div>
                     </div>
                 </div>
