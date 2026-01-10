@@ -70,13 +70,13 @@
                     <div
                         class="absolute bottom-0 left-1/2 flex -translate-x-1/2 translate-y-10 justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-y-[0.83] group-hover:mb-1.5">
                         @if ($konseling['nama'] === 'Psikolog')
-                            <a href="{{ route('product.registrationPsikolog') }}">
+                            <a href="{{ route('counseling.registrationPsikolog') }}">
                                 <button
                                     class="text-[15px] rounded-[10px] bg-gradient-to-r from-[#3986A3] to-[#225062] px-4 py-2 text-white max-sm:rounded-md max-sm:px-6 max-sm:text-[15px]">Daftar
                                     {!! italic_en($konseling['nama']) !!}</button>
                             </a>
                         @else
-                            <a href="{{ route('product.registrationPeer') }}">
+                            <a href="{{ route('counseling.registrationPeer') }}">
                                 <button
                                     class="text-[15px] rounded-[10px] bg-gradient-to-r from-[#3986A3] to-[#225062] px-4 py-2 text-white max-sm:rounded-md max-sm:px-6 max-sm:text-[15px]">Daftar
                                     {!! italic_en($konseling['nama']) !!}</button>
@@ -106,14 +106,14 @@
 
                     <div class="flex justify-center">
                         @if ($konseling['nama'] === 'Psikolog')
-                            <a href="{{ route('product.registrationPsikolog') }}">
+                            <a href="{{ route('counseling.registrationPsikolog') }}">
                                 <button
                                     class="text-md rounded-xl bg-gradient-to-r from-[#3986A3] to-[#225062] w-[170px] py-2 text-white max-sm:w-[190px] max-sm:text-[15px]">
                                     Daftar {!! italic_en($konseling['nama']) !!}
                                 </button>
                             </a>
                         @else
-                            <a href="{{ route('product.registrationPeer') }}">
+                            <a href="{{ route('counseling.registrationPeer') }}">
                                 <button
                                     class="text-md rounded-xl bg-gradient-to-r from-[#3986A3] to-[#225062] w-[170px] py-2 text-white max-sm:w-[190px] max-sm:text-[15px]">
                                     Daftar {!! italic_en($konseling['nama']) !!}

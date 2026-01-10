@@ -2,6 +2,7 @@
     'title' => 'Berbinar Insightful Indonesia',
 ])
 
+
 @section('style')
     <style>
         .step-section {
@@ -13,7 +14,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(to right, #f7b23b, #916823);
+            background: linear-gradient(to right, #F7B23B, #916823);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -27,31 +28,26 @@
 
 @section('content')
     <div
-        class="mx-4 mb-8 mt-24 flex flex-col justify-center rounded-2xl bg-none px-12 py-6 shadow-none max-md:px-1 sm:mx-24 sm:mb-20 sm:mt-36 md:bg-white md:shadow-lg">
+        class="sm:mt-36 mt-24 sm:mb-20 mb-8 sm:mx-24 mx-4 md:bg-white bg-none justify-center flex flex-col md:shadow-lg shadow-none rounded-2xl px-12 max-md:px-1 py-6">
         <div class="flex flex-row justify-between">
             <a href="{{ route('home.index') }}">
-                <div class="flex cursor-pointer items-center space-x-2">
-                    <img src="{{ asset('assets/landing/images/vector/left-arrow.webp') }}" alt="Left Arrow"
-                        class="h-3 w-auto" />
-                    <p class="flex text-[15px] font-semibold text-[#3986A3]">
-                        Kembali
-                        <span class="ml-0.5 hidden sm:block">pilih konseling</span>
-                    </p>
+                <div class="flex items-center space-x-2 cursor-pointer">
+                    <img src="{{ asset('assets/landing/images/vector/left-arrow.webp') }}" alt="Left Arrow" class="h-3 w-auto">
+                    <p class="text-[15px] flex font-semibold text-[#3986A3]">Kembali <span
+                            class="sm:block hidden ml-0.5">pilih konseling</span></p>
                 </div>
             </a>
 
-            <div class="flex cursor-pointer items-center space-x-1" id="openModal">
+            <div class="flex items-center space-x-1 cursor-pointer" id="openModal">
                 <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}" alt="Syarat & Ketentuan"
-                    class="h-3 w-auto" />
-                <p class="text-[15px] font-semibold text-[#3986A3]">
-                    <span class="hidden sm:block">Syarat & Ketentuan</span>
-                    <span class="block sm:hidden">S&K</span>
-                </p>
+                    class="h-3 w-auto">
+                <p class="text-[15px] font-semibold text-[#3986A3]"><span class="sm:block hidden">Syarat &
+                        Ketentuan</span><span class="sm:hidden block">S&K</span></p>
             </div>
         </div>
 
-        {{-- Modal untuk syarat dan ketentuan --}}
 
+        {{-- Modal untuk syarat dan ketentuan --}}
         <div id="modal"
             class="fixed inset-0 z-30 flex hidden items-center justify-center bg-gray-900 bg-opacity-50 backdrop-blur-md">
             <div
@@ -85,7 +81,7 @@
                         <li class="max-sm:text-sm">Para staff mengisi terlebih dahulu form pada halaman berikut</li>
                         <li class="max-sm:text-sm">Setelah mengisi form tersebut, para staff diharapkan untuk melakukan
                             konfirmasi apabila telah submit form pengajuan konseling bersama psikolog melalui Counseling
-                            Product Management Manager <a href="https://wa.me/6287876662013">(087876662013 - Dindu)</a></li>
+                            Product Management Manager <a href="https://wa.me/6285121005396">(085121005396 - Qay Azneen)</a></li>
                         <li class="max-sm:text-sm">Penjadwalan pasti sesi konseling akan diumumkan ketika mendapat
                             konfirmasi dari Pak Danny sebagai Psikolog atau Peer Counselor melalui Counseling Product
                             Management Manager</li>
@@ -102,7 +98,7 @@
 
         {{-- Form Input Pendafataran --}}
 
-        <form id="singleForm" action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
+        <form id="singleForm" action="{{ route('counseling.storePeerStaffRegistration') }}" method="POST" class="flex flex-col" enctype="multipart/form-data">
             @csrf
 
             <div class="step-section active">
@@ -247,7 +243,7 @@
                 </div>
                 {{-- Riwayat Pendidikan dan Pekerjaan --}}
                 <h1 class="font text-gradient my-10 text-center text-3xl font-semibold max-sm:mx-2 max-sm:text-[29px]">
-                    Riwayat Pendidikan dan Pekerjaan</h1>
+                    Riwayat Pendidikan dan Pekerjaan </h1>
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {{-- Pekerjaan Saat Ini --}}
                     <div class="flex flex-col space-y-1">
@@ -300,8 +296,8 @@
                     </div>
                     {{-- Tanggal Pengajuan Konseling --}}
                     <div class="flex flex-col space-y-1">
-                        <p class="text-base text-[#333333]">Tanggal Pengajuan Konseling (Min 5 hari setelah pengisian form)
-                        </p>
+                        <p class="text-base text-[#333333]">Tanggal Pengajuan Konseling (Min 5 hari setelah
+                            pengisian form) </p>
                         <div class="relative">
                             <input name="jadwal_tanggal" autocomplete="off" required type="text"
                                 id="tanggal_konseling"
@@ -316,7 +312,8 @@
 
                 {{-- Kondisi dan Permasalahan --}}
                 <h1 class="font text-gradient my-10 text-center text-3xl font-semibold max-sm:mx-2 max-sm:text-[29px]">
-                    Kondisi dan Permasalahan</h1>
+                    Kondisi dan Permasalahan
+                </h1>
 
                 <div class="flex flex-col space-y-4">
                     {{-- Topik Pengajuan --}}
@@ -334,15 +331,15 @@
                         <p class="text-base text-[#333333]">Cerita/Permasalahan yang ingin dikonsultasikan</p>
                         <div class="relative">
                             <textarea name="cerita" rows="3" required
-                                class="w-full resize-none rounded-lg border-none bg-[#F1F3F6] px-3 py-3 shadow-md focus:ring-[#3986A3] md:shadow-none"
+                                class="w-full rounded-lg border-none bg-[#F1F3F6] px-3 py-3 shadow-md focus:ring-[#3986A3] md:shadow-none resize-none"
                                 placeholder="Mental saya belakangan ini kurang stabil"></textarea>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-center pt-10">
+                <div class="flex justify-center items-center pt-10">
                     <button type="submit"
-                        class="rounded-xl bg-gradient-to-r from-[#3986A3] to-[#15323D] px-[136px] py-[10px] text-xl font-medium text-white md:px-[177px] md:py-3 md:text-2xl">Kirim</button>
+                        class="text-xl md:text-2xl rounded-xl bg-gradient-to-r from-[#3986A3] to-[#15323D] md:px-[177px] md:py-3 font-medium px-[136px] py-[10px] text-white">Kirim</button>
                 </div>
             </div>
         </form>

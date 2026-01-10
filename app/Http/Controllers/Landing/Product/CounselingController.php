@@ -23,10 +23,7 @@ class CounselingController extends Controller
             ],
         ];
 
-        // return view('landing.home.index')->with([
-        //     'konselings' => $konselings
-        // ]);
-        return view('landing.product.index')->with([
+        return view('landing.product.counseling.index')->with([
             'konselings' => $konselings
         ]);
     }

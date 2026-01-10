@@ -17,7 +17,6 @@ class PeerStaffController extends Controller
         return view('dashboard.manager-cpm.peer.index', ['PeerData' => $PeerData]);
     }
 
-
     public function create(Request $request)
     {
         $konselling = $request->session()->get('konselling');
@@ -64,8 +63,6 @@ class PeerStaffController extends Controller
         Alert::toast('Data Psikolog Berhasil di Tambahkan', 'success')->autoClose(5000);
         return redirect()->route('dashboard.peer-staff.index');
     }
-
-
 
     public function show(Request $request, $id)
     {
@@ -127,10 +124,11 @@ class PeerStaffController extends Controller
         return redirect()->route('dashboard.peer-staff.index');
     }
 
-     public function createpeer()
+    public function createpeer()
     {
         return view('dashboard.manager-cpm.peer.create');
     }
+
     public function showpeer()
     {
         return view('dashboard.manager-cpm.peer.show');

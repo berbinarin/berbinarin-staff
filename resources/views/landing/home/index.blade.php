@@ -58,7 +58,7 @@
                     class="flex transform flex-col justify-center space-y-2 p-4 text-center transition-transform duration-300 group-hover:-mt-10 group-hover:scale-y-[0.83]">
                     <h1
                         class="font text-gradient-blue text-xl font-semibold leading-relaxed text-black transition-all duration-300 group-hover:text-[26px] group-hover:leading-normal max-sm:text-[29px]">
-                        <em>Psikolog</em>
+                        Konseling
                     </h1>
                     <img src="{{ asset('assets/landing/images/product/counseling-staff.png') }}" alt="Psikolog"
                         class="h-36 w-auto object-contain transition-all duration-300 group-hover:mt-3 group-hover:h-[160px]" />
@@ -68,7 +68,7 @@
                 </div>
                 <div
                     class="absolute bottom-0 left-1/2 flex -translate-x-1/2 translate-y-10 justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-y-[0.83] group-hover:mb-1.5">
-                    <a href="{{ route('product.index') }}">
+                    <a href="{{ route('counseling.index') }}">
                         <button
                             class="text-[15px] rounded-[10px] bg-gradient-to-r from-[#3986A3] to-[#225062] px-4 py-2 text-white max-sm:rounded-md max-sm:px-6 max-sm:text-[15px]">
                             Daftar Konseling
@@ -118,7 +118,7 @@
                 <img src="{{ asset('assets/landing/images/product/counseling-staff.png') }}" alt="Psikolog"
                     class="h-36 w-auto object-contain" />
                 <div class="flex justify-center">
-                    <a href="{{ route('product.registrationPsikolog') }}">
+                    <a href="{{ route('counseling.registrationPsikolog') }}">
                         <button
                             class="text-md rounded-xl bg-gradient-to-r from-[#3986A3] to-[#225062] w-[170px] py-2 text-white max-sm:w-[190px] max-sm:text-[15px]">
                             Daftar Konseling

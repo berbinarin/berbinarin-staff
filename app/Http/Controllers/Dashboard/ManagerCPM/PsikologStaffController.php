@@ -18,7 +18,6 @@ class PsikologStaffController extends Controller
         return view('dashboard.manager-cpm.psikolog.index', ['PsikologData' => $PsikologData]);
     }
 
-
     public function create(Request $request)
     {
         $konselling = $request->session()->get('konselling');
@@ -66,8 +65,6 @@ class PsikologStaffController extends Controller
         return redirect()->route('dashboard.peer-staff.index');
     }
 
-
-
     public function show(Request $request, $id)
     {
         $PsikologDataDetails = PsikologStaff::find($id);
@@ -81,7 +78,6 @@ class PsikologStaffController extends Controller
         $konselling = $request->session()->get('konselling');
         return view('dashboard.manager-cpm.psikolog.edit', ['PsikologDataDetails' => $PsikologDataDetails], compact('konselling'));
     }
-
 
     public function update(Request $request, $id)
     {
