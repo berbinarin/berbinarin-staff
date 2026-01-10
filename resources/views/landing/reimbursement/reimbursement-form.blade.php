@@ -1,0 +1,420 @@
+@extends('landing.layouts.app', [
+    'title' => 'Berbinar Insightful Indonesia',
+])
+
+@section('style')
+    <style>
+        .step-section {
+            display: none;
+        }
+
+        .step-section.active {
+            display: block;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #f7b23b, #916823);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        select {
+            background-image: none !important;
+        }
+
+        .form-input {
+            border-radius: 8px !important;
+            background: #f3f4f6 !important;
+            height: 48px !important;
+            margin-top: 4px;
+            padding: 0 15px;
+            transition: border 0.2s;
+        }
+
+        .form-input::placeholder {
+            color: #888;
+        }
+
+        .form-input:hover {
+            border: 1.5px solid #3986A3 !important;
+        }
+
+        .form-input:focus {
+            border: 1.5px solid #3986A3 !important;
+            outline: none;
+            box-shadow: none;
+            background: #f3f4f6 !important;
+        }
+
+
+        /* Custom file upload */
+        .custom-file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #f7f7f7;
+            height: 48px;
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+            padding-left: 40px;
+            font-size: 16px;
+            color: #888;
+            transition: border 0.2s;
+            margin-top: 4px;
+        }
+
+        .custom-file-upload:hover {
+            border: 1.5px solid #3986A3;
+        }
+
+        .custom-file-upload .upload-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+        .input-file-hidden {
+            display: none;
+        }
+    </style>
+@endsection
+
+@section('content')
+    <div
+        class="mx-4 mb-8 mt-24 rounded-2xl bg-none px-6 py-6 shadow-none sm:mx-24 sm:mb-20 sm:mt-36 md:bg-white md:px-12 md:shadow-lg">
+
+        {{-- Back --}}
+        <div class="mb-6 flex justify-between">
+            <a href="{{ route('home.index') }}">
+                <div class="flex items-center space-x-2 text-[#3986A3]">
+                    <img src="{{ asset('assets/landing/images/vector/left-arrow.webp') }}" class="h-3" />
+                    <p class="text-[15px] font-semibold">Kembali</p>
+                </div>
+            </a>
+        </div>
+
+        {{-- Title --}}
+        <div class="mb-8 text-center">
+            <h1 class="text-2xl font-bold text-[#3986A3]">Form Pengajuan Reimburse</h1>
+            <p class="mt-2 text-sm text-gray-500">
+                Pastikan seluruh data yang diisi sesuai dan dokumen pendukung telah dilampirkan.
+            </p>
+        </div>
+
+        {{-- FORM --}}
+        <form class="space-y-10" method="POST" action="{{ route('reimbursement.store') }}" enctype="multipart/form-data">
+            @csrf
+
+            {{-- DATA STAFF --}}
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div>
+                    <h3 class="font-semibold text-gray-800">Data Staff</h3>
+                    <p class="text-sm text-gray-500">
+                        Informasi staff yang mengajukan reimburse.
+                    </p>
+                </div>
+
+                <div class="md:col-span-2 space-y-4">
+                    <div>
+                        <label class="form-label">Nama Lengkap<span class="text-red-500">*</span></label>
+                        <input type="text" class="form-input w-full" name="employee_name" placeholder="Budi Berbinar"
+                            required />
+                    </div>
+
+                    <div>
+                        <label class="form-label">Divisi<span class="text-red-500">*</span></label>
+                        <select class="form-input w-full" name="employee_division" required>
+                            <option value="" disabled selected>Pilih divisi</option>
+                            <option value="Web & Mobile Apps Developer">Web & Mobile Apps Developer</option>
+                            <option value="Class Product Management">Class Product Management</option>
+                            <option value="Counseling Product Management">Counseling Product Management</option>
+                            <option value="Marketing Strategist and Sales">Marketing Strategist and Sales</option>
+                            <option value="Secretary and Finance">Secretary and Finance</option>
+                            <option value="Human Resources">Human Resources</option>
+                            <option value="Social Media Content">Social Media Content</option>
+                            <option value="Psychological Testing Product Management">Psychological Testing Product
+                                Management</option>
+                            <option value="Graphic Designer">Graphic Designer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            {{-- KONTAK STAFF --}}
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div>
+                    <h3 class="font-semibold text-gray-800">Kontak Staff</h3>
+                    <p class="text-sm text-gray-500">
+                        Data kontak yang dapat dihubungi.
+                    </p>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="form-label">Nomor Telepon<span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input w-full" name="employee_phone_number"
+                        placeholder="081234567890" required />
+                </div>
+            </div>
+
+            <hr>
+
+            {{-- DETAIL REIMBURSE --}}
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div>
+                    <h3 class="font-semibold text-gray-800">Detail Reimburse</h3>
+                    <p class="text-sm text-gray-500">
+                        Rincian biaya yang diajukan.
+                    </p>
+                </div>
+
+                <div class="md:col-span-2 space-y-4">
+                    <div>
+                        <label class="form-label">Nominal Reimburse<span class="text-red-500">*</span></label>
+                        <input type="text" class="form-input w-full" id="nominal-display"
+                            placeholder="Rp 0" inputmode="numeric" autocomplete="off" required />
+                        <input type="hidden" name="total_amount" id="nominal-value" />
+                    </div>
+
+                    <div>
+                        <label class="form-label">Keterangan<span class="text-red-500">*</span></label>
+                        <input type="text" class="form-input w-full" name="description"
+                            placeholder="Print Proposal" required />
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            {{-- INFORMASI PEMBAYARAN --}}
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div>
+                    <h3 class="font-semibold text-gray-800">Informasi Pembayaran</h3>
+                    <p class="text-sm text-gray-500">
+                        Data rekening atau e-wallet.
+                    </p>
+                </div>
+
+
+                <div class="md:col-span-2 space-y-4">
+                    <div>
+                        <label class="form-label">Nama Pemilik Rekening<span class="text-red-500">*</span></label>
+                        <input type="text" class="form-input w-full" name="employee_account_name"
+                            placeholder="Budi Berbinar" required />
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label class="form-label">Nomor Rekening / E-Wallet<span class="text-red-500">*</span></label>
+                            <input type="text" class="form-input w-full" name="employee_account_number"
+                                placeholder="0123 4567 8910 1112" required />
+                        </div>
+                        <div>
+                            <label class="form-label">Bank / Merchant<span class="text-red-500">*</span></label>
+                            <input type="text" class="form-input w-full" name="employee_bank_name"
+                                placeholder="Bank Central Asia (BCA)" required />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <hr>
+
+            {{-- DOKUMEN --}}
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div>
+                    <h3 class="font-semibold text-gray-800">Dokumen Pendukung</h3>
+                    <p class="text-sm text-gray-500">
+                        Unggah bukti pengeluaran.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="form-label">Upload Bukti Nota<span class="text-red-500">*</span></label>
+                            <label class="custom-file-upload">
+                                <img src="{{ asset('assets/landing/images/vector/upload-icon.svg') }}" class="upload-icon"
+                                    alt="Upload" />
+                                <span id="proof-placeholder">Pilih file</span>
+                                <span id="proof-filename" class="hidden"></span>
+                                <input type="file" class="input-file-hidden" name="proof_file" accept="image/*,.pdf"
+                                    required />
+                            </label>
+                        </div>
+                        <div>
+                            <label class="form-label">TTD Pengusul<span class="text-red-500">*</span></label>
+                            <div onclick="openSignatureModal()" class="custom-file-upload" id="signature-preview-container">
+                                <img src="{{ asset('assets/landing/images/vector/upload-icon.svg') }}" class="upload-icon"
+                                    alt="Upload" />
+                                <span id="signature-placeholder">Klik untuk Tanda Tangan</span>
+                                <img id="signature-image-res" class="hidden h-full py-1 ml-4">
+                            </div>
+
+                            <input type="hidden" name="employee_signature" id="signature-input-value">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- SUBMIT --}}
+            <div class="pt-6 text-right">
+                <button type="button" class="rounded-xl px-6 py-2 font-semibold text-[#055472]"
+                    style="background:#B0E9FF !important">
+                    Batal
+                </button>
+                <button class="rounded-xl bg-[#3986A3] px-6 py-2 font-semibold text-white hover:bg-[#2f6f86]">
+                    Kirim Pengajuan
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div id="signature-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50 px-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-[#3986A3]">Tanda Tangan Digital</h3>
+                <button type="button" onclick="closeSignatureModal()"
+                    class="text-gray-400 hover:text-gray-600">&times;</button>
+            </div>
+
+            <div class="border-2 border-dashed border-gray-200 rounded-lg bg-gray-50">
+                <canvas id="signature-pad" class="w-full h-64 touch-none cursor-crosshair"></canvas>
+            </div>
+
+            <div class="mt-6 flex justify-end space-x-3">
+                <button type="button" id="clear-signature"
+                    class="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200">
+                    Hapus
+                </button>
+                <button type="button" id="save-signature"
+                    class="px-4 py-2 text-sm font-medium text-white bg-[#3986A3] rounded-lg hover:bg-[#2f6f86]">
+                    Simpan TTD
+                </button>
+            </div>
+        </div>
+    </div>
+@endsection
+
+
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+    <script>
+        const modal = document.getElementById('signature-modal');
+        const canvas = document.getElementById('signature-pad');
+        const signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            penColor: 'rgb(0, 0, 0)'
+        });
+
+        function openSignatureModal() {
+            modal.classList.remove('hidden');
+            resizeCanvas();
+        }
+
+        function closeSignatureModal() {
+            modal.classList.add('hidden');
+        }
+
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+            signaturePad.clear();
+        }
+
+
+        document.getElementById('clear-signature').addEventListener('click', () => {
+            signaturePad.clear();
+        });
+
+
+        document.getElementById('save-signature').addEventListener('click', () => {
+            if (signaturePad.isEmpty()) {
+                alert("Tanda tangan masih kosong!");
+                return;
+            }
+
+            const dataURL = signaturePad.toDataURL('image/png');
+
+            document.getElementById('signature-input-value').value = dataURL;
+
+            const previewImg = document.getElementById('signature-image-res');
+            const placeholder = document.getElementById('signature-placeholder');
+
+            previewImg.src = dataURL;
+            previewImg.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+
+            closeSignatureModal();
+        });
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeSignatureModal();
+            }
+        }
+
+        const nominalDisplay = document.getElementById('nominal-display');
+        const nominalValue = document.getElementById('nominal-value');
+
+        function formatRupiah(value) {
+            const digits = value.replace(/\D/g, '');
+            if (!digits) {
+                return {
+                    display: '',
+                    raw: ''
+                };
+            }
+
+            const formatted = new Intl.NumberFormat('id-ID').format(Number(digits));
+            return {
+                display: `Rp ${formatted}`,
+                raw: digits
+            };
+        }
+
+        nominalDisplay.addEventListener('input', (event) => {
+            const {
+                display,
+                raw
+            } = formatRupiah(event.target.value);
+            event.target.value = display;
+            nominalValue.value = raw;
+        });
+
+        const proofInput = document.querySelector('input[name="proof_file"]');
+        const proofPlaceholder = document.getElementById('proof-placeholder');
+        const proofFilename = document.getElementById('proof-filename');
+
+        proofInput.addEventListener('change', (event) => {
+            const file = event.target.files && event.target.files[0];
+            if (!file) {
+                proofFilename.textContent = '';
+                proofFilename.classList.add('hidden');
+                proofPlaceholder.classList.remove('hidden');
+                return;
+            }
+
+            proofFilename.textContent = file.name;
+            proofFilename.classList.remove('hidden');
+            proofPlaceholder.classList.add('hidden');
+        });
+    </script>
+@endpush

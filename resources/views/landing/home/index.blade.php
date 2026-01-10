@@ -42,12 +42,14 @@
 @section('content')
     <div class="mt-28 sm:mt-32 leading-snug flex items-center justify-center">
         <img src="{{ asset('assets/landing/icons/staff-icon.svg') }}" alt="Staff Icon" class="w-[30px] mr-3" />
-        <h1 class="font text-gradient text-center text-[28px] font-bold text-black pb-1 max-md:mx-10 max-sm:mx-2 max-sm:text-[29px]">
+        <h1
+            class="font text-gradient text-center text-[28px] font-bold text-black pb-1 max-md:mx-10 max-sm:mx-2 max-sm:text-[29px]">
             Staff Berbinar
         </h1>
     </div>
     <p class="font text-center text-[15px] font-bold text-black pb-1 max-md:mx-10 max-sm:mx-2 max-sm:text-[15px]">
-        Halaman ini berfungsi sebagai akses layanan internal untuk mendukung kebutuhan kerja <br> dan administrasi staff Berbinar.
+        Halaman ini berfungsi sebagai akses layanan internal untuk mendukung kebutuhan kerja <br> dan administrasi staff
+        Berbinar.
     </p>
 
     <div class="mx-20 my-12 hidden items-center justify-center space-x-5 md:flex">
@@ -63,7 +65,7 @@
                     <img src="{{ asset('assets/landing/images/product/counseling-staff.png') }}" alt="Psikolog"
                         class="h-36 w-auto object-contain transition-all duration-300 group-hover:mt-3 group-hover:h-[160px]" />
                     <p class="text-sm font-semibold leading-tight text-black">
-                        <p>Ajukan sesi konseling khusus staff untuk menjaga kesehatan mental dan keseimbangan kerja.</p>
+                    <p>Ajukan sesi konseling khusus staff untuk menjaga kesehatan mental dan keseimbangan kerja.</p>
                     </p>
                 </div>
                 <div
@@ -93,7 +95,7 @@
                     <img src="{{ asset('assets/landing/images/product/reimburse.png') }}" alt="Peer Counselor"
                         class="h-36 w-auto object-contain transition-all duration-300 group-hover:mt-3 group-hover:h-[160px]" />
                     <p class="text-sm font-semibold leading-tight text-black">
-                        <p>Kelola dan ajukan penggantian biaya kerja secara mudah dan sesuai kebijakan.</p>
+                    <p>Kelola dan ajukan penggantian biaya kerja secara mudah dan sesuai kebijakan.</p>
                     </p>
                 </div>
                 <div
@@ -101,8 +103,7 @@
                     <a href="#">
                         <button id="btn-ajukan-reimburse"
                             class="text-[15px] rounded-[10px] bg-gradient-to-r from-[#3986A3] to-[#225062] px-4 py-2 text-white max-sm:rounded-md max-sm:px-6 max-sm:text-[15px]">
-                            Ajukan <i>Reimburse</i
-                        </button>
+                            Ajukan <i>Reimburse</i </button>
                     </a>
                 </div>
             </div>
@@ -139,7 +140,7 @@
                 <img src="{{ asset('assets/landing/images/product/reimburse.png') }}" alt="Reimburse"
                     class="h-36 w-auto object-contain" />
                 <div class="flex justify-center">
-                    <a href="#" id="btn-ajukan-reimburse-mobile">
+                    <a href="{{ route('reimbursement.index') }}" id="btn-ajukan-reimburse-mobile">
                         <button id="btn-ajukan-reimburse-mobile"
                             class="text-md rounded-xl bg-gradient-to-r from-[#3986A3] to-[#225062] w-[170px] py-2 text-white max-sm:w-[190px] max-sm:text-[15px]">
                             Ajukan <i>Reimburse</i>
@@ -158,37 +159,36 @@
 
 
     <!-- Modal Alert Reimburse -->
-    <div
-        id="modal-reimburse"
+    <div id="modal-reimburse"
         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden px-2">
         <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-[95vw] sm:max-w-lg relative mx-2 sm:mx-0 sm:p-8">
-            <button
-                id="close-modal-reimburse"
-                class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl font-bold"
-            >&times;</button>
+            <button id="close-modal-reimburse"
+                class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
             <div class="flex flex-col items-center">
                 <div class="flex items-center mb-4">
                     <span class="mr-3">
-                        <img src="{{ asset('assets/landing/images/vector/reimburse-icon.svg') }}" alt="Reimburse Icon" class="w-8 h-8 sm:w-8 sm:h-8" />
+                        <img src="{{ asset('assets/landing/images/vector/reimburse-icon.svg') }}" alt="Reimburse Icon"
+                            class="w-8 h-8 sm:w-8 sm:h-8" />
                     </span>
                     <h2 class="text-lg sm:text-2xl font-bold text-yellow-600 mb-0">Reimburse Staff</h2>
                 </div>
                 <p class="text-center text-black mb-6 text-sm sm:text-base">
                     Pastikan seluruh data dan dokumen pendukung telah siap sebelum mengajukan reimburse.
                 </p>
-                <button
-                    id="modal-ajukan-reimburse"
-                    class="bg-gradient-to-r from-[#3986A3] to-[#225062] text-white font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow text-sm sm:text-base"
-                >
-                    Ajukan Reimburse
-                </button>
+                <a href="{{ route('reimbursement.index') }}">
+                    <button id="modal-ajukan-reimburse"
+                        class="bg-gradient-to-r from-[#3986A3] to-[#225062] text-white font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow text-sm sm:text-base">
+                        Ajukan Reimburse
+                    </button>
+                </a>
+
             </div>
         </div>
     </div>
 @endsection
 
 
-@push("script")
+@push('script')
     <script>
         const btnAjukan = document.getElementById('btn-ajukan-reimburse');
         const btnAjukanMobile = document.getElementById('btn-ajukan-reimburse-mobile');

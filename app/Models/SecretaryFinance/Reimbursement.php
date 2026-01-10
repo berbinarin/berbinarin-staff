@@ -12,7 +12,7 @@ class Reimbursement extends Model
 
     protected $table = 'reimbursements';
 
-    protected $cast = [
+    protected $casts = [
         'items' => 'array',
         'proof_path' => 'array',
     ];

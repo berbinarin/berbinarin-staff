@@ -22,7 +22,7 @@ Route::prefix('konseling')->name('counseling.')->group(function () {
     Route::post('/psikolog/store', [PsikologController::class, 'storePsikologStaffRegistration'])->name('storePsikologStaffRegistration');
 });
 
-Route::prefix('reimburse')->name('reimburse.')->group(function () {
+Route::prefix('reimbursement')->name('reimbursement.')->group(function () {
     Route::get('/', [ReimbursementController::class, 'index'])->name('index');
     Route::post('/store', [ReimbursementController::class, 'store'])->name('store');
 });
