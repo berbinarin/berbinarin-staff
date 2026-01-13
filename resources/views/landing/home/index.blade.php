@@ -60,7 +60,7 @@
                     class="flex transform flex-col justify-center space-y-2 p-4 text-center transition-transform duration-300 group-hover:-mt-10 group-hover:scale-y-[0.83]">
                     <h1
                         class="font text-gradient-blue text-xl font-semibold leading-relaxed text-black transition-all duration-300 group-hover:text-[26px] group-hover:leading-normal max-sm:text-[29px]">
-                        Konseling
+                        <em>Konseling</em>
                     </h1>
                     <img src="{{ asset('assets/images/landing/product/counseling-staff.png') }}" alt="Psikolog"
                         class="h-36 w-auto object-contain transition-all duration-300 group-hover:mt-3 group-hover:h-[160px]" />
