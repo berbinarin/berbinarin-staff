@@ -32,7 +32,7 @@
                         <div class="flex items-center p-[18px] bg-white shadow rounded-xl w-[293px] h-[94px]">
                             <div
                                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-primary bg-blur-bg rounded-xl mr-6">
-                                <img src={{ asset('assets/dashboard/icons/psikolog.webp') }} alt=""
+                                <img src={{ asset('assets/images/dashboard/icons/psikolog.webp') }} alt=""
                                     class="h-8 w-5" />
                             </div>
                             <div>
@@ -43,7 +43,7 @@
                         <div class="flex items-center p-[18px] bg-white shadow rounded-xl w-[293px] h-[94px]">
                             <div
                                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-primary bg-blur-bg rounded-xl mr-6">
-                                <img src={{ asset('assets/dashboard/icons/people.webp') }} alt=""
+                                <img src={{ asset('assets/images/dashboard/icons/people.webp') }} alt=""
                                     class="h-10 w-10" />
                             </div>
                             <div>
@@ -193,14 +193,14 @@
                             <h2 class="block text-2xl font-semibold">Total Reimburse Diajukan</h2>
                             <div class="flex flex-row w-full justify-between items-center">
                                 <h3 class="block font-bold text-3xl">265</h3>
-                                <img src={{ asset('assets/dashboard/icons/reimburse-total.webp') }} alt="" class="h-10 w-10" />
+                                <img src={{ asset('assets/images/dashboard/icons/reimburse-total.webp') }} alt="" class="h-10 w-10" />
                             </div>
                         </div>
                         <div class="flex flex-col gap-10 p-6 bg-white shadow-md rounded-xl w-full">
                             <h2 class="block text-2xl font-semibold">Menunggu Verifikasi</h2>
                             <div class="flex flex-row w-full justify-between items-center">
                                 <h3 class="block font-bold text-3xl">18</h3>
-                                <img src={{ asset('assets/dashboard/icons/menunggu-verifikasi.webp') }} alt="" class="h-10 w-10" />
+                                <img src={{ asset('assets/images/dashboard/icons/menunggu-verifikasi.webp') }} alt="" class="h-10 w-10" />
                             </div>
                         </div>
 
@@ -208,14 +208,14 @@
                             <h2 class="block text-2xl font-semibold">Disetujui</h2>
                             <div class="flex flex-row w-full justify-between items-center">
                                 <h3 class="block font-bold text-3xl">2</h3>
-                                <img src={{ asset('assets/dashboard/icons/disetujui.webp') }} alt="" class="h-10 w-10" />
+                                <img src={{ asset('assets/images/dashboard/icons/disetujui.webp') }} alt="" class="h-10 w-10" />
                             </div>
                         </div>
                         <div class="flex flex-col gap-10 p-6 bg-white shadow-md rounded-xl w-full">
                             <h2 class="block text-2xl font-semibold">Ditolak</h2>
                             <div class="flex flex-row w-full justify-between items-center">
                                 <h3 class="block font-bold text-3xl">4</h3>
-                                <img src={{ asset('assets/dashboard/icons/ditolak.webp') }} alt="" class="h-10 w-10" />
+                                <img src={{ asset('assets/images/dashboard/icons/ditolak.webp') }} alt="" class="h-10 w-10" />
                             </div>
                         </div> -->
 

@@ -33,7 +33,7 @@
                                         <th class="sticky-col sticky-col-2 bg-white px-6 py-3 text-start text-base font-bold leading-4 tracking-wider text-black">
                                             No. Invoice
                                         </th>
-                                        <th class="bg-white w-[10%] px-6 py-3 text-center text-base font-bold leading-4 tracking-wider text-black">
+                                        <th class="bg-white px-6 py-3 text-center text-base font-bold leading-4 tracking-wider text-black">
                                             Tanggal
                                         </th>
                                         <th class="bg-white px-6 py-3 text-center text-base font-bold leading-4 tracking-wider text-black">
@@ -48,29 +48,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr class="border-b border-gray-200 hover:bg-gray-200 odd:bg-gray-100 even:bg-white">
-                                        <td class="text-center px-6 py-4">1</td>
-                                        <td class="px-6 py-4">011/INV/BERBINAR/VII/2026</td>
-                                        <td class="text-center px-6 py-4">01-01-2026</td>
-                                        <td class="text-center px-6 py-4">Finance Manager - PT Maju Jaya</td>
-                                        <td class="text-center px-6 py-4">Rp. 1.000.000</td>
-                                        <td class="text-center px-6 py-4">
-                                            <button type="button" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #06E906">
-                                                <i class="bx bx-download text-white"></i>
-                                            </button>
-                                            <a href="{{ route('dashboard.invoice.show', 1) }}" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
-                                                <i class="bx bxs-show text-white"></i>
-                                            </a>
-                                            <a href="{{ route('dashboard.invoice.edit', 1) }}" class="inline-flex items-center rounded p-2 hover:bg-yellow-700" style="background-color: #e9b306">
-                                                <i class="bx bxs-edit-alt text-white"></i>
-                                            </a>
-                                            <button type="button" onclick="openDeleteModal({{-- {{ $user->id }} --}})" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444">
-                                                <i class="bx bxs-trash-alt text-white"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($invoices as $invoice)
+                                        <tr class="border-b border-gray-200 hover:bg-gray-200 odd:bg-gray-100 even:bg-white">
+                                            <td class="text-center px-6 py-4">{{ $loop->iteration }}</td>
+                                            <td class="px-6 py-4">{{ $invoice->invoice_number }}</td>
+                                            <td class="text-center px-6 py-4">{{ \Carbon\Carbon::parse($invoice->invoice_date)->format("d-m-Y") }}</td>
+                                            <td class="text-center px-6 py-4">{{ $invoice->customer_name }} - {{ $invoice->customer_agency }}</td>
+                                            <td class="text-center px-6 py-4">Rp. {{ number_format($invoice->total_amount, 0, ',', '.') }}</td>
+                                            <td class="text-center px-6 py-4">
+                                                <button type="button" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #06E906">
+                                                    <i class="bx bx-download text-white"></i>
+                                                </button>
+                                                <a href="{{ route('dashboard.invoice.show', $invoice->id) }}" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
+                                                    <i class="bx bxs-show text-white"></i>
+                                                </a>
+                                                <a href="{{ route('dashboard.invoice.edit', $invoice->id) }}" class="inline-flex items-center rounded p-2 hover:bg-yellow-700" style="background-color: #e9b306">
+                                                    <i class="bx bxs-edit-alt text-white"></i>
+                                                </a>
+                                                <button type="button" onclick="openDeleteModal({{-- {{ $user->id }} --}})" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444">
+                                                    <i class="bx bxs-trash-alt text-white"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -82,7 +82,7 @@
     <div id="deleteModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #BD7979, #BD7979) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/error.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/error.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Konfirmasi Hapus</h2>
@@ -110,7 +110,7 @@
     <div id="acceptModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/warning-gradient.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/warning-gradient.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Setujui Pengajuan Reimburse?</h2>
@@ -151,7 +151,7 @@
     <div id="rejectModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #BD7979, #BD7979) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/warning-red.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/warning-red.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Tolak Pengajuan Reimburse?</h2>

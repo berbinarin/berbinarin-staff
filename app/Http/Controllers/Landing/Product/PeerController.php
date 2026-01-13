@@ -10,7 +10,7 @@ class PeerController extends Controller
 {
     public function registrationPeer()
     {
-        return view('landing.product.counseling.peer.registration-peer');
+        return view('landing.counseling.peer.registration-peer');
     }
 
     public function storePeerStaffRegistration(Request $request)
@@ -52,7 +52,7 @@ class PeerController extends Controller
 
             PeerStaff::create($data);
 
-            return view('landing.product.counseling.summary-counseling');
+            return view('landing.counseling.summary-counseling');
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi.')

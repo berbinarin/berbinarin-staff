@@ -41,7 +41,7 @@
 
 @section('content')
     <div class="mt-28 sm:mt-32 leading-snug flex items-center justify-center">
-        <img src="{{ asset('assets/landing/icons/staff-icon.svg') }}" alt="Staff Icon" class="w-[30px] mr-3" />
+        <img src="{{ asset('assets/images/landing/icons/staff-icon.svg') }}" alt="Staff Icon" class="w-[30px] mr-3" />
         <h1
             class="font text-gradient text-center text-[28px] font-bold text-black pb-1 max-md:mx-10 max-sm:mx-2 max-sm:text-[29px]">
             Staff Berbinar
@@ -62,7 +62,7 @@
                         class="font text-gradient-blue text-xl font-semibold leading-relaxed text-black transition-all duration-300 group-hover:text-[26px] group-hover:leading-normal max-sm:text-[29px]">
                         Konseling
                     </h1>
-                    <img src="{{ asset('assets/landing/images/product/counseling-staff.png') }}" alt="Psikolog"
+                    <img src="{{ asset('assets/images/landing/product/counseling-staff.png') }}" alt="Psikolog"
                         class="h-36 w-auto object-contain transition-all duration-300 group-hover:mt-3 group-hover:h-[160px]" />
                     <p class="text-sm font-semibold leading-tight text-black">
                     <p>Ajukan sesi konseling khusus staff untuk menjaga kesehatan mental dan keseimbangan kerja.</p>
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <img src="{{ asset('assets/landing/logo/logo-berbinar.webp') }}" alt="Berbinar"
+        <img src="{{ asset('assets/images/logo/logo-berbinar.webp') }}" alt="Berbinar"
             class="h-20 w-auto object-contain" />
 
         <div class="flex items-stretch" style="height: 300px">
@@ -92,7 +92,7 @@
                         class="font text-gradient-blue text-xl font-semibold leading-relaxed text-black transition-all duration-300 group-hover:text-[26px] group-hover:leading-normal max-sm:text-[29px]">
                         <em> Reimburse</em>
                     </h1>
-                    <img src="{{ asset('assets/landing/images/product/reimburse.png') }}" alt="Peer Counselor"
+                    <img src="{{ asset('assets/images/landing/product/reimburse.png') }}" alt="Peer Counselor"
                         class="h-36 w-auto object-contain transition-all duration-300 group-hover:mt-3 group-hover:h-[160px]" />
                     <p class="text-sm font-semibold leading-tight text-black">
                     <p>Kelola dan ajukan penggantian biaya kerja secara mudah dan sesuai kebijakan.</p>
@@ -116,7 +116,7 @@
                 <h1 class="font text-gradient-blue text-2xl font-semibold text-black max-sm:text-[29px]">
                     <em>Psikolog</em>
                 </h1>
-                <img src="{{ asset('assets/landing/images/product/counseling-staff.png') }}" alt="Psikolog"
+                <img src="{{ asset('assets/images/landing/product/counseling-staff.png') }}" alt="Psikolog"
                     class="h-36 w-auto object-contain" />
                 <div class="flex justify-center">
                     <a href="{{ route('counseling.registrationPsikolog') }}">
@@ -137,7 +137,7 @@
                 <h1 class="font text-gradient-blue text-2xl font-semibold text-black max-sm:text-[29px]">
                     <em>Reimburse</em>
                 </h1>
-                <img src="{{ asset('assets/landing/images/product/reimburse.png') }}" alt="Reimburse"
+                <img src="{{ asset('assets/images/landing/product/reimburse.png') }}" alt="Reimburse"
                     class="h-36 w-auto object-contain" />
                 <div class="flex justify-center">
                     <a href="{{ route('reimbursement.index') }}" id="btn-ajukan-reimburse-mobile">
@@ -153,7 +153,7 @@
             </div>
         </div>
 
-        <img src="{{ asset('assets/landing/logo/logo-berbinar.webp') }}" alt="Berbinar"
+        <img src="{{ asset('assets/images/logo/logo-berbinar.webp') }}" alt="Berbinar"
             class="h-14 w-auto object-contain mt-4" />
     </div>
 
@@ -167,7 +167,7 @@
             <div class="flex flex-col items-center">
                 <div class="flex items-center mb-4">
                     <span class="mr-3">
-                        <img src="{{ asset('assets/landing/images/vector/reimburse-icon.svg') }}" alt="Reimburse Icon"
+                        <img src="{{ asset('assets/images/landing/icons/reimburse-icon.svg') }}" alt="Reimburse Icon"
                             class="w-8 h-8 sm:w-8 sm:h-8" />
                     </span>
                     <h2 class="text-lg sm:text-2xl font-bold text-yellow-600 mb-0">Reimburse Staff</h2>

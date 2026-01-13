@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>{{ $title }} - Berbinar Insightful Indonesia</title>
 
-<link rel="shortcut icon" href="{{ asset("assets/landing/logo/logo-berbinar.webp") }}" type="image/x-icon" />
+<link rel="shortcut icon" href="{{ asset("assets/images/logo/logo-berbinar.webp") }}" type="image/x-icon" />
 
 <!-- Vendor CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />

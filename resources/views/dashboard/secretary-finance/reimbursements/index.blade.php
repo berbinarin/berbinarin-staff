@@ -70,7 +70,7 @@
                                             </div>
                                         </td>
                                         <td class="text-center px-6 py-4">
-                                            <a href="{{ route('dashboard.reimbursement.show') }}" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
+                                            <a href="" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
                                                 <i class="bx bxs-show text-white"></i>
                                             </a>
                                             <button type="button" onclick="openAcceptModal()" class="inline-flex items-center rounded p-2 hover:bg-yellow-700" style="background-color: #00B300">
@@ -100,7 +100,7 @@
                                             </div>
                                         </td>
                                         <td class="text-center px-6 py-4">
-                                            <a href="{{ route('dashboard.reimbursement.show') }}" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
+                                            <a href="" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
                                                 <i class="bx bxs-show text-white"></i>
                                             </a>
                                             <button type="button" onclick="openDeleteModal({{-- {{ $user->id }} --}})" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444">
@@ -127,7 +127,7 @@
                                             </div>
                                         </td>
                                         <td class="text-center px-6 py-4">
-                                            <a href="{{ route('dashboard.reimbursement.show') }}" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
+                                            <a href="" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
                                                 <i class="bx bxs-show text-white"></i>
                                             </a>
                                             <button type="button" onclick="openDeleteModal({{-- {{ $user->id }} --}})" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444">
@@ -147,7 +147,7 @@
     <div id="deleteModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #BD7979, #BD7979) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/error.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/error.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Konfirmasi Hapus</h2>
@@ -175,7 +175,7 @@
     <div id="acceptModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/warning-gradient.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/warning-gradient.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Setujui Pengajuan Reimburse?</h2>
@@ -216,7 +216,7 @@
     <div id="rejectModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #BD7979, #BD7979) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/warning-red.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/warning-red.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Tolak Pengajuan Reimburse?</h2>

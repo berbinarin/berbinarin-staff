@@ -7,9 +7,6 @@ use App\Http\Controllers\Landing\Product\PsikologController;
 use App\Http\Controllers\Landing\Product\PeerController;
 use App\Http\Controllers\Landing\Reimbursement\ReimbursementController;
 
-
-
-// Route::get('/', [CounselingController::class, 'index'])->name('home.index');
 Route::get('/', [LandingController::class, 'index'])->name('home.index');
 
 Route::prefix('konseling')->name('counseling.')->group(function () {

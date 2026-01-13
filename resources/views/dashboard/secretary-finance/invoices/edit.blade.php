@@ -9,7 +9,7 @@
             <div class="py-4 md:pb-7 md:pt-12">
                 <div class="mb-2 flex items-center gap-2">
                     <a href="{{ route('dashboard.invoice.index') }}">
-                        <img src="{{ asset('assets/dashboard/svg-icon/dashboard-back.webp') }}" alt="Back Btn" />
+                        <img src="{{ asset('assets/images/dashboard/icons/dashboard-back.webp') }}" alt="Back Btn" />
                     </a>
                     <p class="text-base font-bold leading-normal text-gray-800 sm:text-lg md:text-2xl lg:text-4xl">Ubah Invoice</p>
                 </div>
@@ -173,7 +173,7 @@
     <div id="cancelModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #BD7979, #BD7979) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/error.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/error.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Batalkan Pengubahan Invoice?</h2>
@@ -195,7 +195,7 @@
     <div id="confirmModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
         <div class="relative w-[360px] md:w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg" style="background: linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat, white; border-radius: 20px; background-clip: padding-box, border-box;">
             <!-- Warning Icon -->
-            <img src="{{ asset('assets/dashboard/svg-icon/warning-gradient.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+            <img src="{{ asset('assets/images/alert-icons/warning-gradient.webp') }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
 
             <!-- Title -->
             <h2 class="mt-4 text-2xl font-bold text-stone-900">Buat PDF Invoice?</h2>

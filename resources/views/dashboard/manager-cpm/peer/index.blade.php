@@ -82,7 +82,7 @@
                             background-clip: padding-box, border-box;
                         ">
                             <!-- Warning Icon -->
-                            <img src="{{ asset('assets/images/dashboard/warning.webp') }}" alt="Warning Icon"
+                            <img src="{{ asset('assets/images/alert-icons/warning.webp') }}" alt="Warning Icon"
                                 class="mx-auto h-[83px] w-[83px]" />
 
                             <!-- Title -->

@@ -9,7 +9,7 @@
             <div class="py-4 md:pb-7 md:pt-12">
                 <div class="mb-2 flex items-center gap-2">
                     <a href="{{ route('dashboard.reimbursement.index') }}">
-                        <img src="{{ asset('assets/dashboard/svg-icon/dashboard-back.webp') }}" alt="Back Btn" />
+                        <img src="{{ asset('assets/images/dashboard/icons/dashboard-back.webp') }}" alt="Back Btn" />
                     </a>
                     <p class="text-base font-bold leading-normal text-gray-800 sm:text-lg md:text-2xl lg:text-4xl">Detail
                         Data Pendaftar</p>
@@ -75,14 +75,14 @@
                         <div class="mb-2 flex flex-col">
                             <h2 class="mb-2 text-lg font-semibold text-gray-500">Bukti Nota</h2>
                             <a href="" class="max-w-[10vw]">
-                                <img src="{{ asset('assets/dashboard/icons/bukti.webp') }}" alt="Bukti Nota" class="w-full">
+                                <img src="{{ asset('assets/images/dashboard/icons/bukti.webp') }}" alt="Bukti Nota" class="w-full">
                                 <p class="text-lg font-normal text-white underline bg-[#5F5F5FD9] px-2 py-1 rounded-b-lg">bukti.jpg</p>
                             </a>
                         </div>
                         <div class="mb-2 flex flex-col">
                             <h2 class="mb-2 text-lg font-semibold text-gray-500">Tanda Tangan Digital Pengusul</h2>
                             <a href="" class="max-w-[20vw]">
-                                <img src="{{ asset('assets/dashboard/icons/tanda-tangan.webp') }}" alt="Tanda Tangan Digital Pengusul" class="max-w-[20vw]">
+                                <img src="{{ asset('assets/images/dashboard/icons/tanda-tangan.webp') }}" alt="Tanda Tangan Digital Pengusul" class="max-w-[20vw]">
                                 <p class="text-lg font-normal text-white underline bg-[#5F5F5FD9] px-2 py-1 rounded-b-lg">TTD.jpg</p>
                             </a>
                         </div>

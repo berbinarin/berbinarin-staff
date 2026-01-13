@@ -32,14 +32,14 @@
         <div class="flex flex-row justify-between">
             <a href="{{ route('home.index') }}">
                 <div class="flex items-center space-x-2 cursor-pointer">
-                    <img src="{{ asset('assets/landing/images/vector/left-arrow.webp') }}" alt="Left Arrow" class="h-3 w-auto">
+                    <img src="{{ asset('assets/images/landing/icons/left-arrow.webp') }}" alt="Left Arrow" class="h-3 w-auto">
                     <p class="text-[15px] flex font-semibold text-[#3986A3]">Kembali <span
                             class="sm:block hidden ml-0.5">pilih konseling</span></p>
                 </div>
             </a>
 
             <div class="flex items-center space-x-1 cursor-pointer" id="openModal">
-                <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}" alt="Syarat & Ketentuan"
+                <img src="{{ asset('assets/images/landing/icons/sk-vector.webp') }}" alt="Syarat & Ketentuan"
                     class="h-3 w-auto">
                 <p class="text-[15px] font-semibold text-[#3986A3]"><span class="sm:block hidden">Syarat &
                         Ketentuan</span><span class="sm:hidden block">S&K</span></p>
@@ -57,7 +57,7 @@
                     Syarat dan Ketentuan</h1>
                 <div class="mb-6">
                     <div class="flex items-start gap-2">
-                        <img src="{{ asset('assets/landing/images/vector/sk-vector.webp') }}" alt="Pembalasan Pesan"
+                        <img src="{{ asset('assets/images/landing/icons/sk-vector.webp') }}" alt="Pembalasan Pesan"
                             class="mt-0.5 h-5 w-5" />
                         <span class="font-semibold">Ketentuan</span>
                     </div>
@@ -73,7 +73,7 @@
 
                 <div class="mb-6">
                     <div class="flex items-start gap-2">
-                        <img src="{{ asset('assets/landing/images/vector/chat.webp') }}" alt="Pembalasan Pesan"
+                        <img src="{{ asset('assets/images/landing/icons/chat.webp') }}" alt="Pembalasan Pesan"
                             class="mt-0.5 h-5 w-5" />
                         <span class="font-semibold">Alur Pendaftaran</span>
                     </div>
@@ -129,7 +129,7 @@
                                 <option value="Budha">Budha</option>
                                 <option value="Khonghucu">Khonghucu</option>
                             </select>
-                            <img src="{{ asset('assets/landing/images/vector/dropdown.webp') }}"
+                            <img src="{{ asset('assets/images/landing/icons/dropdown.webp') }}"
                                 class="dropdown-icon pointer-events-none absolute right-5 top-1/2 h-2 w-auto -translate-y-1/2 object-contain transition-transform duration-300" />
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             <input name="tanggal_Lahir" autocomplete="off" required type="text" id="tanggal_lahir"
                                 class="w-full cursor-pointer rounded-lg border-none bg-[#F1F3F6] px-3 py-3 shadow-md focus:ring-[#3986A3] md:shadow-none"
                                 placeholder="dd/mm/yy" readonly />
-                            <img src="{{ asset('assets/landing/images/vector/date.webp') }}"
+                            <img src="{{ asset('assets/images/landing/icons/date.webp') }}"
                                 class="absolute top-1/3 h-4 w-auto object-contain max-sm:hidden lg:right-5"
                                 onclick="document.getElementById('tanggal_lahir').focus()" />
                         </div>
@@ -173,7 +173,7 @@
                                 <option value="Belum Menikah">Belum Menikah</option>
                                 <option value="Sudah Menikah">Sudah Menikah</option>
                             </select>
-                            <img src="{{ asset('assets/landing/images/vector/dropdown.webp') }}"
+                            <img src="{{ asset('assets/images/landing/icons/dropdown.webp') }}"
                                 class="dropdown-icon pointer-events-none absolute right-5 top-1/2 h-2 w-auto -translate-y-1/2 object-contain transition-transform duration-300" />
                         </div>
                     </div>
@@ -303,7 +303,7 @@
                                 id="tanggal_konseling"
                                 class="w-full cursor-pointer rounded-lg border-none bg-[#F1F3F6] px-3 py-3 shadow-md focus:ring-[#3986A3] md:shadow-none"
                                 placeholder="dd/mm/yy" readonly />
-                            <img src="{{ asset('assets/landing/images/vector/date.webp') }}"
+                            <img src="{{ asset('assets/images/landing/icons/date.webp') }}"
                                 class="absolute top-1/3 h-4 w-auto object-contain max-sm:hidden lg:right-5"
                                 onclick="document.getElementById('tanggal_lahir').focus()" />
                         </div>

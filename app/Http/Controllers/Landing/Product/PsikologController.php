@@ -10,7 +10,7 @@ class PsikologController extends Controller
 {
     public function registrationPsikolog()
     {
-        return view('landing.product.counseling.psikolog.registration-psikolog');
+        return view('landing.counseling.psikolog.registration-psikolog');
     }
 
     public function storePsikologStaffRegistration(Request $request)
@@ -52,7 +52,7 @@ class PsikologController extends Controller
 
             PsikologStaff::create($data);
 
-            return view('landing.product.counseling.summary-counseling');
+            return view('landing.counseling.summary-counseling');
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi.')

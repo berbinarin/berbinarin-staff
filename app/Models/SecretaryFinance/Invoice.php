@@ -12,8 +12,9 @@ class Invoice extends Model
 
     protected $table = 'invoices';
 
-    protected $cast = [
+    protected $casts = [
         'products' => 'array',
+        'invoice_date' => 'date',
     ];
 
     protected $fillable = [

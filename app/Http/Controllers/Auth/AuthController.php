@@ -21,7 +21,7 @@ class AuthController extends Controller
                 'type' => 'success',
                 'title' => 'Login Berhasil',
                 'message' => 'Silahkan masuk',
-                'icon' => asset('assets/dashboard/svg-icon/success.webp'),
+                'icon' => asset('assets/images/alert-icons/success.webp'),
             ]);
         } else {
             return redirect()->route('auth.index')->with([
@@ -29,12 +29,12 @@ class AuthController extends Controller
                 'type' => 'error',
                 'title' => 'Gagal!',
                 'message' => 'Username atau Password salah',
-                'icon' => asset('assets/dashboard/svg-icon/error.webp'),
+                'icon' => asset('assets/images/alert-icons/error.webp'),
             ]);
         }
     }
 
-    public function Logout()
+    public function logout()
     {
         Auth::logout();
         request()->session()->invalidate();
@@ -44,7 +44,7 @@ class AuthController extends Controller
             'type' => 'success',
             'title' => 'Logout Berhasil',
             'message' => 'Sampai jumpa lagi 😘',
-            'icon' => asset('assets/dashboard/svg-icon/success.webp'),
+            'icon' => asset('assets/images/alert-icons/success.webp'),
         ]);
     }
 

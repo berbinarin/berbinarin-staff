@@ -95,7 +95,7 @@
         <div class="mb-6 flex justify-between">
             <a href="{{ route('home.index') }}">
                 <div class="flex items-center space-x-2 text-[#3986A3]">
-                    <img src="{{ asset('assets/landing/images/vector/left-arrow.webp') }}" class="h-3" />
+                    <img src="{{ asset('assets/images/landing/icons/left-arrow.webp') }}" class="h-3" />
                     <p class="text-[15px] font-semibold">Kembali</p>
                 </div>
             </a>
@@ -244,7 +244,7 @@
                         <div>
                             <label class="form-label">Upload Bukti Nota<span class="text-red-500">*</span></label>
                             <label class="custom-file-upload">
-                                <img src="{{ asset('assets/landing/images/vector/upload-icon.svg') }}" class="upload-icon"
+                                <img src="{{ asset('assets/images/landing/icons/upload-icon.svg') }}" class="upload-icon"
                                     alt="Upload" />
                                 <span id="proof-placeholder">Pilih file</span>
                                 <span id="proof-filename" class="hidden"></span>
@@ -255,7 +255,7 @@
                         <div>
                             <label class="form-label">TTD Pengusul<span class="text-red-500">*</span></label>
                             <div onclick="openSignatureModal()" class="custom-file-upload" id="signature-preview-container">
-                                <img src="{{ asset('assets/landing/images/vector/upload-icon.svg') }}" class="upload-icon"
+                                <img src="{{ asset('assets/images/landing/icons/upload-icon.svg') }}" class="upload-icon"
                                     alt="Upload" />
                                 <span id="signature-placeholder">Klik untuk Tanda Tangan</span>
                                 <img id="signature-image-res" class="hidden h-full py-1 ml-4">
@@ -266,7 +266,6 @@
                     </div>
                 </div>
             </div>
-
 
             {{-- SUBMIT --}}
             <div class="pt-6 text-right">
@@ -280,8 +279,6 @@
             </div>
         </form>
     </div>
-
-
 
     <div id="signature-modal"
         class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50 px-4">
