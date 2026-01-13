@@ -41,7 +41,7 @@
 
 @section('content')
     <div class="mt-28 sm:mt-32 leading-snug">
-        <a href="https://berbinar.in/produk/konseling/daftar-konseling">
+        <a href="{{ route('home.index') }}">
             <div class="flex items-center justify-center space-x-2 cursor-pointer w-1/5 max-sm:w-1/3 max-sm:mb-5">
                 <img src="{{ asset('assets/images/landing/icons/left-arrow.webp') }}" alt="Left Arrow" class="h-3 w-auto">
                 <p class="text-base flex font-medium text-[#3986A3]">Kembali</p>

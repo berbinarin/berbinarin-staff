@@ -102,7 +102,7 @@
         </div>
 
         <div class="flex items-center justify-center pt-10">
-            <a href="https://staff.berbinar.in/konseling" class="flex w-full justify-center">
+            <a href="{{ route('home.index') }}" class="flex w-full justify-center">
                 <button
                     class="text-2xl w-full rounded-xl bg-gradient-to-r from-[#3986A3] to-[#225062] px-24 py-2 text-white max-sm:text-xl sm:w-auto">Beranda</button>
             </a>
