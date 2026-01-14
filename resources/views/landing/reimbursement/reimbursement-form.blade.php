@@ -269,7 +269,7 @@
 
             {{-- SUBMIT --}}
             <div class="pt-6 text-right">
-                <button type="button" class="rounded-xl px-6 py-2 font-semibold text-[#055472]"
+                <button type="button" id="cancel-button" class="rounded-xl px-6 py-2 font-semibold text-[#055472]"
                     style="background:#B0E9FF !important">
                     Batal
                 </button>
@@ -305,6 +305,28 @@
             </div>
         </div>
     </div>
+
+    <div id="cancel-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 px-4">
+        <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+            <div class="mb-4 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-[#3986A3]">Batalkan Pengajuan?</h3>
+                <button type="button" onclick="closeCancelModal()" class="text-gray-400 hover:text-gray-600">&times;</button>
+            </div>
+            <p class="text-sm text-gray-600">
+                Data yang sudah diisi akan hilang jika kamu keluar dari halaman ini.
+            </p>
+            <div class="mt-6 flex justify-end space-x-3">
+                <button type="button" onclick="closeCancelModal()"
+                    class="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200">
+                    Lanjut Isi
+                </button>
+                <a href="{{ route('home.index') }}"
+                    class="rounded-lg bg-[#3986A3] px-4 py-2 text-sm font-medium text-white hover:bg-[#2f6f86]">
+                    Ya, Batalkan
+                </a>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
@@ -327,6 +349,21 @@
         function closeSignatureModal() {
             modal.classList.add('hidden');
         }
+
+        const cancelModal = document.getElementById('cancel-modal');
+        const cancelButton = document.getElementById('cancel-button');
+
+        function openCancelModal() {
+            cancelModal.classList.remove('hidden');
+            cancelModal.classList.add('flex');
+        }
+
+        function closeCancelModal() {
+            cancelModal.classList.add('hidden');
+            cancelModal.classList.remove('flex');
+        }
+
+        cancelButton.addEventListener('click', openCancelModal);
 
         function resizeCanvas() {
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -362,11 +399,14 @@
             closeSignatureModal();
         });
 
-        window.onclick = function(event) {
+        window.addEventListener('click', function(event) {
             if (event.target == modal) {
                 closeSignatureModal();
             }
-        }
+            if (event.target == cancelModal) {
+                closeCancelModal();
+            }
+        });
 
         const nominalDisplay = document.getElementById('nominal-display');
         const nominalValue = document.getElementById('nominal-value');
