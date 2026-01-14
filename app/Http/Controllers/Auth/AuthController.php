@@ -16,16 +16,14 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard.index')->with([
-                'alert' => true,
+            return redirect()->route('dashboard.index')->with('alert',[
                 'type' => 'success',
                 'title' => 'Login Berhasil',
                 'message' => 'Silahkan masuk',
                 'icon' => asset('assets/images/alert-icons/success.webp'),
             ]);
         } else {
-            return redirect()->route('auth.index')->with([
-                'alert' => true,
+            return redirect()->route('auth.index')->with('alert',[
                 'type' => 'error',
                 'title' => 'Gagal!',
                 'message' => 'Username atau Password salah',
@@ -39,8 +37,7 @@ class AuthController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect()->route('auth.index')->with([
-            'alert' => true,
+        return redirect()->route('auth.index')->with('alert',[
             'type' => 'success',
             'title' => 'Logout Berhasil',
             'message' => 'Sampai jumpa lagi 😘',
