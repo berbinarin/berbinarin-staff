@@ -97,7 +97,7 @@
             <!-- Actions -->
             <div class="mt-6 flex justify-center gap-3">
                 <button type="button" id="cancelDelete" onclick="closeDeleteModal()" class="rounded-lg border border-stone-300 px-6 py-2 text-stone-700">Tidak</button>
-                <form id="deleteForm" action="{{ route("dashboard.invoice.destroy", $invoice->id) }}" method="POST" class="inline">
+                <form id="deleteForm" action="" method="POST" class="inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="rounded-[5px] bg-gradient-to-r from-[#74AABF] to-[#3986A3] px-6 py-2 font-medium text-white">
