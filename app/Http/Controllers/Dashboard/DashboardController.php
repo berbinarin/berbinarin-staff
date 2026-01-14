@@ -4,14 +4,22 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ManagerCPM\PeerStaff;
+use App\Models\ManagerCPM\PsikologStaff;
+use App\Models\SecretaryFinance\Invoice;
+use App\Models\SecretaryFinance\Reimbursement;
 
 class DashboardController extends Controller
 {
     public function index() {
-        $totalReimburseDiajukan = 70;
-        $menungguVerifikasi = 40;
-        $disetujui = 20;
-        $ditolak = 10;
-        return view('dashboard.index', compact('totalReimburseDiajukan', 'menungguVerifikasi', 'disetujui', 'ditolak'));
+        $totalReimbursement = Reimbursement::count();
+        $pendingReimbursement = Reimbursement::where('status', 'pending')->count();
+        $approvedReimbursement = Reimbursement::where('status', 'approved')->count();
+        $rejectedReimbursement = Reimbursement::where('status', 'rejected')->count();
+
+        $peerStaffCount = PeerStaff::count();
+        $psikologStaffCount = PsikologStaff::count();
+        $totalCounselingRegistrants = $peerStaffCount + $psikologStaffCount;
+        return view('dashboard.index', compact('totalReimbursement', 'pendingReimbursement', 'approvedReimbursement', 'rejectedReimbursement', 'peerStaffCount', 'psikologStaffCount', 'totalCounselingRegistrants'));
     }
 }

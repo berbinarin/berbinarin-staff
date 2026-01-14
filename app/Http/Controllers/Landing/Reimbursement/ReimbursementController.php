@@ -64,7 +64,7 @@ class ReimbursementController extends Controller
             'proof_path' => $proofPaths,
         ]);
 
-        return redirect()->back()->with('success', 'Berhasil mengajukan reimburse!');
+        return view('landing.reimbursement.reimbursement-summary')->with('success', 'Berhasil mengajukan reimburse!');
     }
 
     private function storeSignatureImage(string $signatureData): ?string
