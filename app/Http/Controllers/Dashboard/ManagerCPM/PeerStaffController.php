@@ -60,7 +60,12 @@ class PeerStaffController extends Controller
         $konselling->fill($validatedData);
         $konselling->save();
 
-        Alert::toast('Data Psikolog Berhasil di Tambahkan', 'success')->autoClose(5000);
+        session()->flash('alert', [
+            'type' => 'success',
+            'title' => 'Berhasil!',
+            'message' => 'Peer staff berhasil dibuat.',
+            'icon' => asset('assets\dashboard\success.webp')
+        ]);
         return redirect()->route('dashboard.peer-staff.index');
     }
 
@@ -114,13 +119,24 @@ class PeerStaffController extends Controller
         $PsikologDataDetails->fill($validatedData);
         $PsikologDataDetails->save();
 
-        Alert::toast('Data Psikolog Berhasil di Edit', 'success')->autoClose(5000);
+        session()->flash('alert', [
+        'type' => 'success',
+        'title' => 'Berhasil!',
+        'message' => 'Data Peer Staff berhasil diperbarui.',
+        'icon' => asset('assets\dashboard\success.webp')
+        ]);
+
         return redirect()->route('dashboard.peer-staff.index');
     }
     public function destroy($id)
     {
         PeerStaff::where('id', $id)->delete();
-        Alert::toast('Data Psikolog Berhasil di Hapus', 'success')->autoClose(5000);
+        session()->flash('alert', [
+            'type' => 'success',
+            'title' => 'Berhasil!',
+            'message' => 'Data Peer Staff berhasil dihapus.',
+            'icon' => asset('assets\dashboard\success.webp')
+        ]);
         return redirect()->route('dashboard.peer-staff.index');
     }
 
