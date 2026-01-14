@@ -49,27 +49,6 @@
                 </p>
             </div>
             <div class="rounded-lg bg-white px-4 py-4 shadow-md mb-7 md:px-8 md:py-7 xl:px-10 flex flex-col gap-10">
-                <div class="flex flex-wrap justify-end gap-3">
-                    @if ($proofDownloadUrl)
-                        <a href="{{ $proofDownloadUrl }}"
-                            class="rounded px-4 py-2 text-white bg-primary flex items-center gap-2">
-                            <i class="bx bx-download text-white"></i>
-                            Download Bukti
-                        </a>
-                    @endif
-                    @if ($signatureDownloadUrl)
-                        <a href="{{ $signatureDownloadUrl }}"
-                            class="rounded px-4 py-2 text-white bg-primary flex items-center gap-2">
-                            <i class="bx bx-download text-white"></i>
-                            Download TTD
-                        </a>
-                    @endif
-                    <a href="{{ route('dashboard.reimbursement.export', $reimbursementData->id) }}"
-                        class="rounded px-4 py-2 text-white bg-primary flex items-center gap-2">
-                        <i class="bx bx-file text-white"></i>
-                        Export DOCX
-                    </a>
-                </div>
                 <div>
                     <h1 class="mb-5 text-3xl font-bold text-primary-alt">Informasi Umum</h1>
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -131,8 +110,8 @@
                                 <button type="button"
                                     onclick="openPreviewModal('Bukti Nota', '{{ $proofDownloadUrl }}', '{{ $proofUrl }}', {{ $isProofImage ? 'true' : 'false' }})"
                                     class="max-w-[10vw] text-left">
-                                    <img src="{{ asset('assets/images/dashboard/icons/bukti.webp') }}" alt="Bukti Nota"
-                                        class="w-full">
+                                    <img src="{{ $isProofImage ? $proofUrl : asset('assets/images/dashboard/icons/bukti.webp') }}"
+                                        alt="Bukti Nota" class="w-full">
                                     <p class="text-lg font-normal text-white underline bg-[#5F5F5FD9] px-2 py-1 rounded-b-lg">
                                         bukti.jpg</p>
                                 </button>
@@ -146,7 +125,7 @@
                                 <button type="button"
                                     onclick="openPreviewModal('Tanda Tangan', '{{ $signatureDownloadUrl }}', '{{ $signatureUrl }}', {{ $isSignatureImage ? 'true' : 'false' }})"
                                     class="max-w-[20vw] text-left">
-                                    <img src="{{ asset('assets/images/dashboard/icons/tanda-tangan.webp') }}"
+                                    <img src="{{ $isSignatureImage ? $signatureUrl : asset('assets/images/dashboard/icons/tanda-tangan.webp') }}"
                                         alt="Tanda Tangan Digital Pengusul" class="max-w-[20vw]">
                                     <p class="text-lg font-normal text-white underline bg-[#5F5F5FD9] px-2 py-1 rounded-b-lg">
                                         TTD.jpg</p>

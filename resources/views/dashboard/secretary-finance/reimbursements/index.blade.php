@@ -72,21 +72,21 @@
                                             $status = strtolower((string) ($reimbursement->status ?? 'pending'));
                                             $statusMap = [
                                                 'approved' => [
-                                                    'label' => 'Approved',
+                                                    'label' => 'Disetujui',
                                                     'bg' => '#ECFDF3',
                                                     'border' => '#12B76A',
                                                     'text' => '#12B76A',
                                                     'icon' => 'bxs-check-circle',
                                                 ],
                                                 'rejected' => [
-                                                    'label' => 'Rejected',
+                                                    'label' => 'Ditolak',
                                                     'bg' => '#FEF3F2',
                                                     'border' => '#F04438',
                                                     'text' => '#F04438',
                                                     'icon' => 'bxs-x-circle',
                                                 ],
                                                 'pending' => [
-                                                    'label' => 'Pending',
+                                                    'label' => 'Tertunda',
                                                     'bg' => '#FFFFED',
                                                     'border' => '#AAAA00',
                                                     'text' => '#AAAA00',

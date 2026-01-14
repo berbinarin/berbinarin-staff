@@ -153,16 +153,16 @@ class ReimbursementController extends Controller
             ? Carbon::parse($reimbursement->reimbursement_date)->locale('id')->translatedFormat('d F Y')
             : '';
 
-        $templateProcessor->setValue('reimburse_no', $reimbursement->reimbursement_number ?? '-');
-        $templateProcessor->setValue('reimburse_date', $reimburseDate);
-        $templateProcessor->setValue('employee_name', $reimbursement->employee_name ?? '');
-        $templateProcessor->setValue('employee_division', $reimbursement->employee_division ?? '');
-        $templateProcessor->setValue('employee_position', $reimbursement->employee_position ?? '');
-        $templateProcessor->setValue('employee_phone_number', $reimbursement->employee_phone_number ?? '');
-        $templateProcessor->setValue('employee_account_number', $reimbursement->employee_account_number ?? '');
-        $templateProcessor->setValue('employee_bank_name', $reimbursement->employee_bank_name ?? '');
-        $templateProcessor->setValue('employee_account_name', $reimbursement->employee_account_name ?? '');
-        $templateProcessor->setValue('total_amount', $formatRupiah($reimbursement->total_amount ?? 0));
+        $templateProcessor->setValue('reimburse_no', $this->escapeDocx($reimbursement->reimbursement_number ?? '-'));
+        $templateProcessor->setValue('reimburse_date', $this->escapeDocx($reimburseDate));
+        $templateProcessor->setValue('employee_name', $this->escapeDocx($reimbursement->employee_name ?? ''));
+        $templateProcessor->setValue('employee_division', $this->escapeDocx($reimbursement->employee_division ?? ''));
+        $templateProcessor->setValue('employee_position', $this->escapeDocx($reimbursement->employee_position ?? ''));
+        $templateProcessor->setValue('employee_phone_number', $this->escapeDocx($reimbursement->employee_phone_number ?? ''));
+        $templateProcessor->setValue('employee_account_number', $this->escapeDocx($reimbursement->employee_account_number ?? ''));
+        $templateProcessor->setValue('employee_bank_name', $this->escapeDocx($reimbursement->employee_bank_name ?? ''));
+        $templateProcessor->setValue('employee_account_name', $this->escapeDocx($reimbursement->employee_account_name ?? ''));
+        $templateProcessor->setValue('total_amount', $this->escapeDocx($formatRupiah($reimbursement->total_amount ?? 0)));
 
         $items = $reimbursement->items ?? [];
         $itemCount = count($items);
@@ -181,17 +181,17 @@ class ReimbursementController extends Controller
                 : '';
             $nominal = (float) ($item['amount'] ?? 0);
 
-            $templateProcessor->setValue("no{$suffix}", $row);
-            $templateProcessor->setValue("date{$suffix}", $itemDate);
-            $templateProcessor->setValue("description{$suffix}", $item['description'] ?? '');
-            $templateProcessor->setValue("nominal{$suffix}", $formatRupiah($nominal));
+            $templateProcessor->setValue("no{$suffix}", $this->escapeDocx($row));
+            $templateProcessor->setValue("date{$suffix}", $this->escapeDocx($itemDate));
+            $templateProcessor->setValue("description{$suffix}", $this->escapeDocx($item['description'] ?? ''));
+            $templateProcessor->setValue("nominal{$suffix}", $this->escapeDocx($formatRupiah($nominal)));
         }
 
         if ($itemCount === 0) {
-            $templateProcessor->setValue('no', '-');
-            $templateProcessor->setValue('date', '-');
-            $templateProcessor->setValue('description', '-');
-            $templateProcessor->setValue('nominal', $formatRupiah(0));
+            $templateProcessor->setValue('no', $this->escapeDocx('-'));
+            $templateProcessor->setValue('date', $this->escapeDocx('-'));
+            $templateProcessor->setValue('description', $this->escapeDocx('-'));
+            $templateProcessor->setValue('nominal', $this->escapeDocx($formatRupiah(0)));
         }
 
         $this->setTemplateImage($templateProcessor, 'proof_image', $reimbursement->proof_path[0] ?? null, 220);
@@ -212,7 +212,22 @@ class ReimbursementController extends Controller
 
         $templateProcessor->saveAs($tempPath);
 
-        return response()->download($tempPath, $fileName)->deleteFileAfterSend(true);
+        while (ob_get_level() > 0) {
+            ob_end_clean();
+        }
+
+        return response()
+            ->download(
+                $tempPath,
+                $fileName,
+                ['Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+            )
+            ->deleteFileAfterSend(true);
+    }
+
+    private function escapeDocx($value): string
+    {
+        return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 
     private function setTemplateImage(TemplateProcessor $templateProcessor, string $key, ?string $path, int $maxWidth): void
