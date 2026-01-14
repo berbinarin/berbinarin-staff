@@ -267,106 +267,24 @@
                                         <th class="">ID</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
+                                        @forelse ($latestTransactions as $index => $transaction)
+                                            <tr class="border-b border-gray-200 bg-white">
+                                                <td class="text-center">{{ $index + 1 }}.</td>
+                                                <td class="py-4">
+                                                    <p>{{ \Carbon\Carbon::parse($transaction['date'])->format('d-m-Y') }}</p>
+                                                </td>
+                                                <td class="text-center">{{ $transaction['type'] }}</td>
+                                                <td class="flex justify-center pt-3">
+                                                    {{ $transaction['number'] }}
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr class="border-b border-gray-200 bg-white">
+                                                <td colspan="4" class="py-4 text-center text-gray-500">
+                                                    Belum ada data invoice atau reimburse.
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
