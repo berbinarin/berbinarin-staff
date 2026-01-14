@@ -57,12 +57,10 @@
                                                 class="bx bx-show text-white"></i></a>
                                         <a href="{{ route('dashboard.psikolog-staff.edit', $item->id) }}" class="p-2 bg-yellow-500 hover:bg-yellow-600 rounded"><i
                                                 class="bx bx-edit text-white"></i></a>
-                                        <form id="deleteForm-{{ $item->id }}" action="{{ route('dashboard.psikolog-staff.destroy', $item->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="p-2 bg-red-500 hover:bg-red-600 rounded focus:outline-none"><i
+
+                                            <button onclick="openDeleteModal({{ $item->id }}, '{{ e($item->name) }}')" class="p-2 bg-red-500 hover:bg-red-600 rounded focus:outline-none"><i
                                                                                             class="bx bx-trash-alt text-white"></i></button>
-                                        </form>
+
 
                                     </td>
                                 </tr>
@@ -72,44 +70,58 @@
                         </tbody>
                     </table>
 
-                    <!-- Modal Konfirmasi Hapus -->
-                    <div id="confirmModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
-                        <div class="relative w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg"
-                            style="
-                            background:
-                                linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat,
-                                white;
-                            border-radius: 20px;
-                            background-clip: padding-box, border-box;
-                        ">
-                            <!-- Warning Icon -->
-                            <img src="{{ asset('assets/images/alert-icons/warning.webp') }}" alt="Warning Icon"
-                                class="mx-auto h-[83px] w-[83px]" />
-
-                            <!-- Title -->
-                            <h2 class="mt-4 text-2xl font-bold text-stone-900">Konfirmasi Batal</h2>
-
-                            <!-- Message -->
-                            <p class="mt-2 text-base font-medium text-black">Apakah Anda yakin ingin membatalkan penambahan
-                                data ini?</p>
-
-                            <!-- Actions -->
-                            <div class="mt-6 flex justify-center gap-3">
-                                <button id="cancelCancel"
-                                    class="rounded-lg border border-stone-300 px-6 py-2 text-stone-700">Tidak</button>
-                                <button id="confirmCancel"
-                                    class="rounded-[5px] bg-gradient-to-r from-[#74AABF] to-[#3986A3] px-6 py-2 font-medium text-white">Ya</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+            <!-- Modal Konfirmasi Hapus -->
+    <div id="deleteModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
+        <div
+            class="relative w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg"
+            style="
+                background:
+                    linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat,
+                    white;
+                border-radius: 20px;
+                background-clip: padding-box, border-box;
+            "
+        >
+            <!-- Warning Icon -->
+            <img src="{{ asset("assets\dashboard\warning.webp") }}" alt="Warning Icon" class="mx-auto h-[83px] w-[83px]" />
+
+            <!-- Title -->
+            <h2 class="mt-4 text-2xl font-bold text-stone-900">Konfirmasi Hapus</h2>
+
+            <!-- Message -->
+            <p class="mt-2 text-base font-medium text-black">
+                Apakah Anda yakin ingin menghapus
+                <span id="deleteItemName"></span>
+                ? Semua data terkait juga akan dihapus.
+            </p>
+
+            <!-- Actions -->
+            <div class="mt-6 flex justify-center gap-3">
+                <form id="deleteForm" method="POST" class="w-1/2">
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit" class="w-full rounded-[5px] bg-gradient-to-r from-[#74AABF] to-[#3986A3] px-6 py-2 font-medium text-white">Hapus</button>
+                </form>
+                <button type="button" class="w-1/2 rounded-lg border border-stone-300 px-6 py-2 text-stone-700" onclick="closeDeleteModal()">Batal</button>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
     <script>
+        function toggleModal(modalID) {
+            document.getElementById(modalID).classList.toggle('hidden');
+            document.getElementById(modalID + '-backdrop').classList.toggle('hidden');
+            document.getElementById(modalID).classList.toggle('flex');
+            document.getElementById(modalID + '-backdrop').classList.toggle('flex');
+        }
         let deleteModal = document.getElementById('deleteModal');
         let deleteForm = document.getElementById('deleteForm');
 

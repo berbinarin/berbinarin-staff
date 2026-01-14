@@ -200,7 +200,7 @@
                             style="width: 50%; border: 2px solid #3986A3; color: #3986A3;">
                             Batal
                         </button>
-                        <button type="submit"
+                        <button type="button" id="saveButton"
                             class="w-1/3 rounded-xl flex-1 flex items-center justify-center h-12 xl:text-xl lg:text-lg md:text-base sm:text-base font-medium"
                             style="width: 50%; background: #3986A3; color: #fff;">
                             Simpan
@@ -241,6 +241,35 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Konfirmasi Edit -->
+    <div id="confirmEditModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
+        <div class="relative w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg"
+            style="
+            background:
+                linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat,
+                white;
+            border-radius: 20px;
+            background-clip: padding-box, border-box;
+        ">
+            <!-- Warning Icon -->
+            <img src="{{ asset('assets/dashboard/warning.webp') }}" alt="Warning Icon"
+                class="mx-auto h-[83px] w-[83px]" />
+
+            <!-- Title -->
+            <h2 class="mt-4 text-2xl font-bold text-stone-900">Konfirmasi Edit</h2>
+
+            <!-- Message -->
+            <p class="mt-2 text-base font-medium text-black">Apakah Anda yakin ingin menyimpan perubahan data ini?</p>
+
+            <!-- Actions -->
+            <div class="mt-6 flex justify-center gap-3">
+                <button id="cancelEdit" class="rounded-lg border border-stone-300 px-6 py-2 text-stone-700">Tidak</button>
+                <button id="confirmEdit" class="rounded-[5px] bg-gradient-to-r from-[#74AABF] to-[#3986A3] px-6 py-2 font-medium text-white">Ya</button>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
@@ -319,6 +348,27 @@
 
             cancelCancel.addEventListener('click', function() {
                 confirmModal.classList.add('hidden');
+            });
+
+            // MODAL KONFIRMASI EDIT
+            const saveButton = document.getElementById('saveButton');
+            const confirmEditModal = document.getElementById('confirmEditModal');
+            const confirmEdit = document.getElementById('confirmEdit');
+            const cancelEdit = document.getElementById('cancelEdit');
+            const form = document.getElementById('editForm');
+
+            saveButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                confirmEditModal.classList.remove('hidden');
+            });
+
+            confirmEdit.addEventListener('click', function() {
+                confirmEditModal.classList.add('hidden');
+                form.submit();
+            });
+
+            cancelEdit.addEventListener('click', function() {
+                confirmEditModal.classList.add('hidden');
             });
         });
     </script>

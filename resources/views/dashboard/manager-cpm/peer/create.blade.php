@@ -21,7 +21,7 @@
                 </p>
             </div>
             <div class="rounded-[18px] bg-white px-4 py-4 drop-shadow-lg md:px-8 md:py-5 xl:px-10 flex-1 overflow-y-auto">
-                <form action="{{ route('dashboard.peer-staff.store') }}" method="POST">
+                <form id="peerStaffForm" action="{{ route('dashboard.peer-staff.store') }}" method="POST">
                     @csrf
 
                     <!-- Data Diri -->
@@ -195,11 +195,14 @@
                             style="width: 50%; border: 2px solid #3986A3; color: #3986A3;">
                             Batal
                         </button>
-                        <button type="submit"
-                            class="w-1/3 rounded-xl flex-1 flex items-center justify-center h-12 xl:text-xl lg:text-lg md:text-base sm:text-base font-medium"
+                        <button
+                            type="button"
+                            id="openConfirmCreate"
+                            class="w-1/3 rounded-xl flex-1 flex items-center justify-center h-12 xl:text-xl lg:text-lg md:text-base sm:text-base font-medium cursor-not-allowed"
                             style="width: 50%; background: #3986A3; color: #fff;">
                             Simpan
                         </button>
+
                     </div>
                 </form>
             </div>
@@ -233,6 +236,46 @@
                     class="rounded-lg border border-stone-300 px-6 py-2 text-stone-700">Tidak</button>
                 <button id="confirmCancel"
                     class="rounded-[5px] bg-gradient-to-r from-[#74AABF] to-[#3986A3] px-6 py-2 font-medium text-white">Ya</button>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Modal Konfirmasi simpan -->
+    <div id="confirmCreateModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/40">
+        <div class="relative w-[560px] rounded-[20px] bg-white p-6 text-center font-plusJakartaSans shadow-lg"
+            style="
+            background:
+                linear-gradient(to right, #74aabf, #3986a3) top/100% 6px no-repeat,
+                white;
+            border-radius: 20px;
+            background-clip: padding-box, border-box;
+        ">
+            <!-- Warning Icon -->
+            <img src="{{ asset('assets/dashboard/warning.webp') }}" alt="Warning Icon"
+                class="mx-auto h-[83px] w-[83px]" />
+
+            <!-- Title -->
+            <h2 class="mt-4 text-2xl font-bold text-stone-900">Konfirmasi Simpan</h2>
+
+            <!-- Message -->
+            <p class="mt-2 text-base font-medium text-black">Apakah Anda yakin ingin menyimpan perubahan data ini?</p>
+
+            <!-- Actions -->
+            <div class="mt-6 flex justify-center gap-3">
+                <button type="button" id="cancelEdit"
+                    class=" rounded-xl flex-1 flex items-center justify-center h-12 xl:text-xl lg:text-lg md:text-base sm:text-base font-medium"
+                    style="width: 50%; border: 2px solid #3986A3; color: #3986A3;">
+                    Batal
+                </button>
+                <button
+                    type="submit"
+                    form="peerStaffForm"
+                     class=" rounded-xl flex-1 flex items-center justify-center h-12 xl:text-xl lg:text-lg md:text-base sm:text-base font-medium "
+                    style="width: 50%; background: linear-gradient(to right, #74AABF, #3986A3); color: white;">
+                    Ya
+                </button>
+
             </div>
         </div>
     </div>
@@ -282,22 +325,6 @@
                 }
             });
 
-            //  HARI KONSELING OTOMATIS
-            function getDayName(dateStr) {
-                // Format input: d-m-Y
-                const parts = dateStr.split('-');
-                if (parts.length !== 3) return '';
-                const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
-                const hariMap = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                return hariMap[dateObj.getDay()];
-            }
-
-            const tglKonselingInput = document.getElementById('tglkonseling');
-            const hariKonselingInput = document.getElementById('hari_konseling');
-            tglKonselingInput.addEventListener('change', function() {
-                hariKonselingInput.value = getDayName(this.value);
-            });
-
             // MODAL KONFIRMASI BATAL
             const cancelButton = document.getElementById('cancelButton');
             const confirmModal = document.getElementById('confirmModal');
@@ -316,6 +343,54 @@
             cancelCancel.addEventListener('click', function() {
                 confirmModal.classList.add('hidden');
             });
-        });
+
+
+
+            // simpan
+            const form = document.getElementById('peerStaffForm');
+            const openConfirmBtn = document.getElementById('openConfirmCreate');
+            const confirmCreateModal = document.getElementById('confirmCreateModal');
+            const cancelEdit = document.getElementById('cancelEdit');
+            const requiredFields = form.querySelectorAll('[required]');
+
+            function checkFormValidity() {
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value || field.value.trim() === '') {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    openConfirmBtn.classList.remove('cursor-not-allowed', 'opacity-50');
+                } else {
+                    openConfirmBtn.classList.add('cursor-not-allowed', 'opacity-50');
+                }
+
+                return isValid;
+            }
+
+            // cek tiap perubahan input
+            requiredFields.forEach(field => {
+                field.addEventListener('input', checkFormValidity);
+                field.addEventListener('change', checkFormValidity);
+            });
+
+            // klik Simpan → hanya buka modal kalau valid
+            openConfirmBtn.addEventListener('click', function () {
+                if (!checkFormValidity()) return;
+                confirmCreateModal.classList.remove('hidden');
+            });
+
+            // tutup modal
+            cancelEdit.addEventListener('click', function () {
+                confirmCreateModal.classList.add('hidden');
+            });
+
+            // initial check
+            checkFormValidity();
+
+    });
     </script>
 @endsection
