@@ -61,8 +61,13 @@ class PsikologStaffController extends Controller
         $konselling->fill($validatedData);
         $konselling->save();
 
-        Alert::toast('Data Psikolog Berhasil di Tambahkan', 'success')->autoClose(5000);
-        return redirect()->route('dashboard.peer-staff.index');
+        session()->flash('alert', [
+            'type' => 'success',
+            'title' => 'Berhasil!',
+            'message' => 'Psikolog berhasil dibuat.',
+            'icon' => asset('assets\dashboard\success.webp')
+        ]);
+        return redirect()->route('dashboard.psikolog-staff.index');
     }
 
     public function show(Request $request, $id)
@@ -114,13 +119,24 @@ class PsikologStaffController extends Controller
         $PsikologDataDetails->fill($validatedData);
         $PsikologDataDetails->save();
 
-        Alert::toast('Data Psikolog Berhasil di Edit', 'success')->autoClose(5000);
+        session()->flash('alert', [
+        'type' => 'success',
+        'title' => 'Berhasil!',
+        'message' => 'Data Psikolog Staff berhasil diperbarui.',
+        'icon' => asset('assets\dashboard\success.webp')
+        ]);
+
         return redirect()->route('dashboard.psikolog-staff.index');
     }
     public function destroy($id)
     {
         PsikologStaff::where('id', $id)->delete();
-        Alert::toast('Data Psikolog Berhasil di Hapus', 'success')->autoClose(5000);
+        session()->flash('alert', [
+            'type' => 'success',
+            'title' => 'Berhasil!',
+            'message' => 'Data Psikolog Staff berhasil dihapus.',
+            'icon' => asset('assets\dashboard\success.webp')
+        ]);
         return redirect()->route('dashboard.psikolog-staff.index');
     }
 }
