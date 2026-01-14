@@ -273,7 +273,7 @@
                 </button>
                 <button
                     type="submit"
-                    form="peerStaffForm"
+                    form="psikologStaffForm"
                      class=" rounded-xl flex-1 flex items-center justify-center h-12 xl:text-xl lg:text-lg md:text-base sm:text-base font-medium "
                     style="width: 50%; background: linear-gradient(to right, #74AABF, #3986A3); color: white;">
                     Ya
