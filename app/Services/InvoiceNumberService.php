@@ -14,8 +14,7 @@ class InvoiceNumberService
         $monthRoman = $this->toRomanMonth($date->month);
 
         return DB::transaction(function () use ($year, $monthRoman) {
-            $last = Invoice::withTrashed()
-                ->whereYear('invoice_date', $year)
+            $last = Invoice::whereYear('invoice_date', $year)
                 ->orderBy('invoice_date', 'desc')
                 ->orderBy('id', 'desc')
                 ->lockForUpdate()

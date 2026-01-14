@@ -21,13 +21,19 @@
                 <div>
                     <h1 class="mb-5 text-3xl font-bold text-primary-alt">Informasi Umum</h1>
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                        <div class="mb-2 flex flex-col">
+                        <div class="mb-2 flex flexe-col">
                             <h2 class="mb-2 text-lg font-semibold text-gray-500">Nomor Invoice</h2>
-                            <p class="text-lg font-semibold">011 / INV / BERBINAR / VII / 2025</p>
+                            <p class="text-lg font-semibold">{{ $invoiceData->invoice_number }}</p>
                         </div>
+
+                            @php
+                                $invoice_date = $invoiceData->invoice_date
+                                    ? \Carbon\Carbon::parse($invoiceData->invoice_date)
+                                    : null;
+                            @endphp
                         <div class="mb-2 flex flex-col">
                             <h2 class="mb-2 text-lg font-semibold text-gray-500">Tanggal Pengajuan</h2>
-                            <p class="text-lg font-semibold">1 Januari 2026</p>
+                            <p class="text-lg font-semibold">{{ $invoice_date ? $invoice_date->format('d/m/Y') : '' }}</p>
                         </div>
                     </div>
                 </div>
@@ -37,11 +43,11 @@
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                         <div class="mb-2 flex flex-col">
                             <h2 class="mb-2 text-lg font-semibold text-gray-500">Jabatan</h2>
-                            <p class="text-lg font-semibold">Finance Manager</p>
+                            <p class="text-lg font-semibold">{{ $invoiceData->customer_name }}</p>
                         </div>
                         <div class="mb-2 flex flex-col">
                             <h2 class="mb-2 text-lg font-semibold text-gray-500">Instansi</h2>
-                            <p class="text-lg font-semibold">PT Maju Jaya</p>
+                            <p class="text-lg font-semibold">{{ $invoiceData->customer_agency }}</p>
                         </div>
                     </div>
                 </div>
@@ -61,24 +67,38 @@
                                 </tr>
                             </thead>
                             <tbody id="invoice-items">
-                                <tr>
-                                    <td class="border-b-2 border-gray-300 px-2 py-3 text-center">1</td>
-                                    <td class="border-b-2 border-gray-300 px-2 py-3">
-                                        <p class="px-1.5 py-[3px]">Pembelian Paket Kelas Berbinar+ A+</p>
-                                    </td>
-                                    <td class="border-b-2 border-gray-300 px-2 py-3">
-                                        <p class="px-1.5 py-[3px] text-center">1</p>
-                                    </td>
-                                    <td class="border-b-2 border-gray-300 px-2 py-3">
-                                        <p class="px-1.5 py-[3px] text-center">Paket</p>
-                                    </td>
-                                    <td class="border-b-2 border-gray-300 px-2 py-3">
-                                        <p class="px-1.5 py-[3px] text-center">Rp. 200.000</p>
-                                    </td>
-                                    <td class="border-b-2 border-gray-300 px-2 py-3">
-                                        <p class="px-1.5 py-[3px] text-center">Rp. 0</p>
-                                    </td>
-                                </tr>
+                                @forelse ($invoiceData->products ?? [] as $item)
+                                    <tr>
+                                        <td class="border-b-2 border-gray-300 px-2 py-3 text-center">
+                                            {{ $item['no'] ?? $loop->iteration }}
+                                        </td>
+                                        <td class="border-b-2 border-gray-300 px-2 py-3">
+                                            <p class="px-1.5 py-[3px]">{{ $item['description'] ?? '-' }}</p>
+                                        </td>
+                                        <td class="border-b-2 border-gray-300 px-2 py-3">
+                                            <p class="px-1.5 py-[3px] text-center">{{ $item['quantity'] ?? 0 }}</p>
+                                        </td>
+                                        <td class="border-b-2 border-gray-300 px-2 py-3">
+                                            <p class="px-1.5 py-[3px] text-center">{{ $item['unit'] ?? '-' }}</p>
+                                        </td>
+                                        <td class="border-b-2 border-gray-300 px-2 py-3">
+                                            <p class="px-1.5 py-[3px] text-center">
+                                                Rp. {{ number_format($item['unit_price'] ?? 0, 0, ',', '.') }}
+                                            </p>
+                                        </td>
+                                        <td class="border-b-2 border-gray-300 px-2 py-3">
+                                            <p class="px-1.5 py-[3px] text-center">
+                                                Rp. {{ number_format($item['discount'] ?? 0, 0, ',', '.') }}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="border-b-2 border-gray-300 px-2 py-3 text-center text-gray-500">
+                                            Belum ada data produk.
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

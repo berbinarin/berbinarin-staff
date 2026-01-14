@@ -17,6 +17,16 @@
                 <p class="w-full text-disabled"><span class="italic">Invoice</span> akan dibuat otomatis dalam format PDF.</p>
             </div>
             <div class="rounded-lg bg-white px-4 py-4 shadow-md md:px-8 md:py-7 xl:px-10 mb-7">
+                @if ($errors->any())
+                    <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>• {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 {{-- <form id="berbinarForm" action="{{ route("dashboard.invoice.store") }}" method="POST" enctype="multipart/form-data"> --}}
                 <form id="berbinarForm" action="{{ route('dashboard.invoice.store') }}" method="POST"
                     enctype="multipart/form-data">
@@ -44,7 +54,7 @@
 
                         <div class="flex flex-row gap-5 w-full">
                             <div class="w-1/3 flex flex-col gap-2">
-                                <label for="position">Jabatan</label>
+                                <label for="position">Jabatan/Nama</label>
                                 <input name="customer_name" type="text"
                                     class="w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[6.5px] shadow-sm text-sm">
                             </div>
@@ -97,14 +107,14 @@
                                                     placeholder="pcs">
                                             </td>
                                             <td class="border-b-2 border-gray-300 px-2 py-3">
-                                                <input type="number" name="products[0][unit_price]"
-                                                    class="w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm focus:outline"
+                                                <input type="text" name="products[0][unit_price]" inputmode="numeric"
+                                                    class="js-rupiah w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm focus:outline"
                                                     placeholder="Rp. 0">
                                             </td>
                                             <td class="border-b-2 border-gray-300 px-2 py-3">
-                                                <input type="number" name="products[0][discount]"
-                                                    class="w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm focus:outline"
-                                                    placeholder="0">
+                                                <input type="text" name="products[0][discount]" inputmode="numeric"
+                                                    class="js-rupiah w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm focus:outline"
+                                                    placeholder="Rp. 0">
                                             </td>
                                             <td class="border-b-2 border-gray-300 px-2 py-3 flex justify-center">
                                                 <button type="button"
@@ -133,8 +143,8 @@
                             <div>
                                 <label for="total" class="mb-2 block font-semibold text-gray-900">Total</label>
                                 <!-- <input type="text" id="total" name="total"
-                                            class="block w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] p-2.5 text-sm text-gray-900 focus:border-primary focus:ring-primary"
-                                            placeholder="Rp. " required> -->
+                                                class="block w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] p-2.5 text-sm text-gray-900 focus:border-primary focus:ring-primary"
+                                                placeholder="Rp. " required> -->
                                 <div id="total"
                                     class="block w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] p-2.5 text-sm text-gray-900">
                                     Rp. </div>
@@ -144,8 +154,8 @@
                             <div>
                                 <label for="calculated" class="mb-2 block font-semibold text-gray-900">Terbilang</label>
                                 <!-- <input type="text" id="calculated" name="calculated"
-                                            class="block w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] p-2.5 text-sm text-gray-900 focus:border-primary focus:ring-primary"
-                                            placeholder="" required> -->
+                                                class="block w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] p-2.5 text-sm text-gray-900 focus:border-primary focus:ring-primary"
+                                                placeholder="" required> -->
                                 <div id="calculated"
                                     class="block w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] p-2.5 text-sm text-gray-900">
                                     &nbsp;</div>
@@ -197,8 +207,6 @@
                                 Invoice</button>
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>
@@ -280,10 +288,10 @@
                 <input type="text" name="products[${rowCount-1}][unit]" class="w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm shadow-sm focus:outline" placeholder="pcs">
             </td>
             <td class="border-b-2 border-gray-300 px-2 py-3">
-                <input type="number" name="products[${rowCount-1}][unit_price]" class="w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm shadow-sm focus:outline" placeholder="Rp. 0">
+                <input type="text" name="products[${rowCount-1}][unit_price]" inputmode="numeric" class="js-rupiah w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm shadow-sm focus:outline" placeholder="Rp. 0">
             </td>
             <td class="border-b-2 border-gray-300 px-2 py-3">
-                <input type="number" name="products[${rowCount-1}][discount]" class="w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm shadow-sm focus:outline" placeholder="0">
+                <input type="text" name="products[${rowCount-1}][discount]" inputmode="numeric" class="js-rupiah w-full rounded-lg bg-[#F4F4F4] border-2 border-[#B3B3B3] px-1.5 py-[3px] text-sm focus:outline" placeholder="Rp. 0">
             </td>
             <td class="border-b-2 border-gray-300 px-2 py-3 flex justify-center">
                 <button type="button" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444" onclick="removeRow(this)">
@@ -346,8 +354,25 @@
 
     <script>
         function formatRupiah(num) {
-            // format sederhana, bisa kamu ganti Intl.NumberFormat('id-ID')
             return new Intl.NumberFormat('id-ID').format(num);
+        }
+
+        function cleanRupiahValue(value) {
+            return value.replace(/[^\d]/g, '');
+        }
+
+        function formatRupiahInput(input) {
+            const digits = cleanRupiahValue(input.value);
+            if (!digits) {
+                input.value = '';
+                return;
+            }
+            input.value = 'Rp. ' + formatRupiah(parseInt(digits, 10));
+        }
+
+        function getRupiahNumber(input) {
+            const digits = cleanRupiahValue(input?.value || '');
+            return digits ? parseFloat(digits) : 0;
         }
 
         function recalcTotal() {
@@ -357,8 +382,8 @@
 
             rows.forEach(row => {
                 const qty = parseFloat(row.querySelector('input[name*="[quantity]"]')?.value || 0);
-                const price = parseFloat(row.querySelector('input[name*="[unit_price]"]')?.value || 0);
-                const disc = parseFloat(row.querySelector('input[name*="[discount]"]')?.value || 0);
+                const price = getRupiahNumber(row.querySelector('input[name*="[unit_price]"]'));
+                const disc = getRupiahNumber(row.querySelector('input[name*="[discount]"]'));
 
                 subtotal += qty * price;
                 totalDiscount += disc;
@@ -371,23 +396,41 @@
         }
 
         document.addEventListener('input', (e) => {
+            if (e.target.classList.contains('js-rupiah')) {
+                formatRupiahInput(e.target);
+            }
             if (e.target.closest('#invoice-products')) {
                 recalcTotal();
             }
         });
 
-        document.addEventListener('DOMContentLoaded', recalcTotal);
-    </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.js-rupiah').forEach(formatRupiahInput);
+            recalcTotal();
+        });
 
-
-    <script>
+        document.getElementById('berbinarForm')?.addEventListener('submit', () => {
+            document.querySelectorAll('.js-rupiah').forEach((input) => {
+                input.value = cleanRupiahValue(input.value);
+            });
+        });
         function penyebut(n) {
-            const huruf = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh",
+            const angka = [
+                "",
+                "Satu",
+                "Dua",
+                "Tiga",
+                "Empat",
+                "Lima",
+                "Enam",
+                "Tujuh",
+                "Delapan",
+                "Sembilan",
+                "Sepuluh",
                 "Sebelas"
             ];
-            n = Math.floor(Math.abs(n));
 
-            if (n < 12) return huruf[n];
+            if (n < 12) return angka[n];
             if (n < 20) return penyebut(n - 10) + " Belas";
             if (n < 100) return penyebut(Math.floor(n / 10)) + " Puluh " + penyebut(n % 10);
             if (n < 200) return "Seratus " + penyebut(n - 100);

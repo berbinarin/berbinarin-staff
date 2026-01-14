@@ -62,7 +62,7 @@ class PsikologStaffController extends Controller
         $konselling->save();
 
         Alert::toast('Data Psikolog Berhasil di Tambahkan', 'success')->autoClose(5000);
-        return redirect()->route('dashboard.peer-staff.index');
+        return redirect()->route('dashboard.psikolog-staff.index');
     }
 
     public function show(Request $request, $id)

@@ -56,16 +56,18 @@
                                             <td class="text-center px-6 py-4">{{ $invoice->customer_name }} - {{ $invoice->customer_agency }}</td>
                                             <td class="text-center px-6 py-4">Rp. {{ number_format($invoice->total_amount, 0, ',', '.') }}</td>
                                             <td class="text-center px-6 py-4">
-                                                <button type="button" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #06E906">
+                                                <a href="{{ route('dashboard.invoice.export', $invoice->id) }}"
+                                                    class="inline-flex items-center rounded p-2 hover:bg-blue-700"
+                                                    style="background-color: #06E906">
                                                     <i class="bx bx-download text-white"></i>
-                                                </button>
+                                                </a>
                                                 <a href="{{ route('dashboard.invoice.show', $invoice->id) }}" class="inline-flex items-center rounded p-2 hover:bg-blue-700" style="background-color: #3b82f6">
                                                     <i class="bx bxs-show text-white"></i>
                                                 </a>
                                                 <a href="{{ route('dashboard.invoice.edit', $invoice->id) }}" class="inline-flex items-center rounded p-2 hover:bg-yellow-700" style="background-color: #e9b306">
                                                     <i class="bx bxs-edit-alt text-white"></i>
                                                 </a>
-                                                <button type="button" onclick="openDeleteModal({{-- {{ $user->id }} --}})" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444">
+                                                <button type="button" onclick="openDeleteModal({{ $invoice->id }})" class="inline-flex items-center rounded p-2 hover:bg-red-700" style="background-color: #ef4444">
                                                     <i class="bx bxs-trash-alt text-white"></i>
                                                 </button>
                                             </td>
@@ -95,7 +97,7 @@
             <!-- Actions -->
             <div class="mt-6 flex justify-center gap-3">
                 <button type="button" id="cancelDelete" onclick="closeDeleteModal()" class="rounded-lg border border-stone-300 px-6 py-2 text-stone-700">Tidak</button>
-                <form id="deleteForm" method="POST" class="inline">
+                <form id="deleteForm" action="" method="POST" class="inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="rounded-[5px] bg-gradient-to-r from-[#74AABF] to-[#3986A3] px-6 py-2 font-medium text-white">
@@ -203,8 +205,8 @@
         let deleteModal = document.getElementById('deleteModal');
         let deleteForm = document.getElementById('deleteForm');
 
-        function openDeleteModal(userId) {
-            deleteForm.action = `/dashboard/pendaftar/${userId}`;
+        function openDeleteModal(invoice) {
+            deleteForm.action = `/dashboard/invoice/${invoice}`;
             deleteModal.classList.remove('hidden');
         }
 
@@ -217,8 +219,8 @@
         let acceptModal = document.getElementById('acceptModal');
         let acceptForm = document.getElementById('acceptForm');
 
-        function openAcceptModal(userId) {
-            acceptForm.action = `/dashboard/pendaftar/${userId}`;
+        function openAcceptModal(invoice) {
+            acceptForm.action = `/dashboard/invoice/${invoice}`;
             acceptModal.classList.remove('hidden');
         }
 
@@ -231,8 +233,8 @@
         let rejectModal = document.getElementById('rejectModal');
         let rejectForm = document.getElementById('rejectForm');
 
-        function openRejectModal(userId) {
-            rejectForm.action = `/dashboard/pendaftar/${userId}`;
+        function openRejectModal(invoice) {
+            rejectForm.action = `/dashboard/invoice/${invoice}`;
             rejectModal.classList.remove('hidden');
         }
 

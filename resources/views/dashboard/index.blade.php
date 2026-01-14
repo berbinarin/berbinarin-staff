@@ -36,7 +36,7 @@
                                     class="h-8 w-5" />
                             </div>
                             <div>
-                                <span class="block text-xl font-bold">20</span>
+                                <span class="block text-xl font-bold">{{ $psikologStaffCount }}</span>
                                 <span class="block text-[#717a7e] font-medium text-base">Psikolog</span>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     class="h-10 w-10" />
                             </div>
                             <div>
-                                <span class="block text-xl font-bold">30</span>
+                                <span class="block text-xl font-bold">{{ $peerStaffCount }}</span>
                                 <span class="block text-[#717a7e] font-medium text-base">Peer Counselor</span>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                                     <span class="font-normal text-xs xl:text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl">
                                         Total pendaftar layanan konseling saat ini adalah
                                         <span class="font-bold text-xs xl:text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl">
-                                            pendaftar.</span>
+                                            {{ $totalCounselingRegistrants }} pendaftar.</span>
                                     </span>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
-                            const chartDataValues = [];
+                            const chartDataValues = [{{ $psikologStaffCount }}, {{ $peerStaffCount }}];
                             const chartColors = ['rgba(16, 102, 129, 0.6)', 'rgba(233, 179, 6, 0.6)'];
                             const solidColors = ['#106681', '#E9B306'];
                             const chartLabels = ['Psikolog', 'Peer Counselor'];
@@ -249,7 +249,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <p class="text-[14px]">Total Reimburse Saat Ini adalah <span><b>{{ $totalReimburseDiajukan }}</b></span></p>
+                            <p class="text-[14px]">Total Reimburse Saat Ini adalah <span><b>{{ $totalReimbursement }}</b></span></p>
                         </div>
                     </div>
 
@@ -267,106 +267,24 @@
                                         <th class="">ID</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Invoice</td>
-                                            <td class="flex justify-center pt-3">
-                                                FR-67
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-gray-200 bg-white">
-                                            <td class="text-center">1.</td>
-                                            <td class="py-4">
-                                                <p>1-1-2026</p>
-                                            </td>
-                                            <td class="text-center">Reimburse</td>
-                                            <td class="flex justify-center pt-3">
-                                                011 / INV / BERBINAR / VII / 2026
-                                            </td>
-                                        </tr>
+                                        @forelse ($latestTransactions as $index => $transaction)
+                                            <tr class="border-b border-gray-200 bg-white">
+                                                <td class="text-center">{{ $index + 1 }}.</td>
+                                                <td class="py-4">
+                                                    <p>{{ \Carbon\Carbon::parse($transaction['date'])->format('d-m-Y') }}</p>
+                                                </td>
+                                                <td class="text-center">{{ $transaction['type'] }}</td>
+                                                <td class="flex justify-center pt-3">
+                                                    {{ $transaction['number'] }}
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr class="border-b border-gray-200 bg-white">
+                                                <td colspan="4" class="py-4 text-center text-gray-500">
+                                                    Belum ada data invoice atau reimburse.
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -379,7 +297,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
-                            const chartDataValues = [{{ $totalReimburseDiajukan }}, {{ $menungguVerifikasi }}, {{ $disetujui }}, {{ $ditolak }}];
+                            const chartDataValues = [{{ $totalReimbursement }}, {{ $pendingReimbursement }}, {{ $approvedReimbursement }}, {{ $rejectedReimbursement }}];
                             const chartColors = ['rgba(57, 134, 163, 0.6)', 'rgba(233, 179, 6, 0.6)', 'rgba(84, 159, 240, 0.6)', 'rgba(239, 68, 68, 0.6)'];
                             const solidColors = ['#3986A3', '#E9B306', '#549FF0', '#EF4444'];
                             const chartLabels = ['1', '2', '3', '4'];
