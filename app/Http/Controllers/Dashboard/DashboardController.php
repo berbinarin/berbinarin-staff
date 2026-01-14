@@ -51,7 +51,8 @@ class DashboardController extends Controller
             });
 
         $latestTransactions = $latestInvoices
-            ->merge($latestReimbursements)
+            ->toBase()
+            ->concat($latestReimbursements->toBase())
             ->sortByDesc('date')
             ->take(10)
             ->values();
