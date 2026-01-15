@@ -25,7 +25,7 @@
 
             <!-- Form Section -->
             <div class="rounded-[18px] bg-white px-4 py-4 drop-shadow-lg md:px-8 md:py-5 xl:px-10 flex-1 overflow-y-auto">
-                <form action="{{ route('dashboard.peer-staff.update', $PsikologDataDetails->id) }}" method="POST">
+                <form action="{{ route('dashboard.peer-staff.update', $PsikologDataDetails->id) }}" method="POST" id="editForm">
                     @csrf
                     @method('PUT')
 
@@ -343,7 +343,7 @@
             });
 
             confirmCancel.addEventListener('click', function() {
-                window.location.href = "{{ route('dashboard.psikolog-staff.index') }}";
+                window.location.href = "{{ route('dashboard.peer-staff.index') }}";
             });
 
             cancelCancel.addEventListener('click', function() {
