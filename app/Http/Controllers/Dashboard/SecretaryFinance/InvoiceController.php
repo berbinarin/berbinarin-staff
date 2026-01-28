@@ -238,7 +238,7 @@ class InvoiceController extends Controller
         $invoice = Invoice::findOrFail($id);
 
         $invoice->update([
-            'invoice_number' => $invoice->invoice_number . '-deleted',
+            'invoice_number' => $invoice->invoice_number . '-deleted-' . Str::uuid(),
         ]);
 
         $invoice->delete();

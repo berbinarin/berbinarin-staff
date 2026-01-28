@@ -8,6 +8,7 @@ use App\Models\SecretaryFinance\Reimbursement;
 use App\Services\ReimbursementNumberService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class ReimbursementController extends Controller
@@ -271,6 +272,9 @@ class ReimbursementController extends Controller
     public function destroy(string $id)
     {
         $reimbursement = Reimbursement::findOrFail($id);
+        $reimbursement->update([
+            'reimbursement_number' => ($reimbursement->reimbursement_number ?? 'reimbursement') . '-deleted-' . Str::uuid(),
+        ]);
         $reimbursement->delete();
 
         return redirect()->route('dashboard.reimbursement.index');
